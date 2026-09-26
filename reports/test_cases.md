@@ -1,0 +1,24 @@
+# Test Cases
+
+| Test ID | Condition | Result | PASS/FAIL | Notes |
+|---|---|---|---|---|
+| TC01 | Valid financial profile | no exception | PASS | monthly_savings computed as post-expense, post-EMI surplus |
+| TC02 | Missing income (NaN) | no exception | PASS | savings_rate is NaN when income is NaN (safe_div propagates NaN, no crash) |
+| TC03 | Negative expense component | no exception | PASS | engineer() does not itself reject negative inputs; range validity is enforced by validation.py at the dataset level, not here |
+| TC04 | Zero income | no exception | PASS | safe_div returns NaN on zero denominator, not a ZeroDivisionError |
+| TC05 | Invalid family size | no exception | PASS | family_size not read by engineer(); checked in validation.py range_checks (dependents_le_family_size) |
+| TC06 | Dependents > family size | no exception | PASS | checked in validation.py range_checks, not engineer() |
+| TC07 | Invalid city | no exception | PASS | checked in integration.py unmatched_city count and validation.py valid_city_keys |
+| TC08 | Invalid/unparsable date | no exception | PASS | goal_horizon_years is NaN when reference_month is NaT, not a crash |
+| TC09 | Invalid goal year (before reference year) | no exception | PASS | negative goal_horizon_years correctly surfaces an invalid input rather than being silently clipped |
+| TC10 | Negative assets | no exception | PASS | net_worth arithmetic is correct even with an invalid negative asset value; validation.py's assets_nonneg check is what should catch this at the dataset level |
+| TC11 | Negative liabilities | no exception | PASS | liabilities_nonneg is checked in validation.py, not engineer() |
+| TC12 | Duplicate user ID | no exception | PASS | unique_user_ids is checked at the dataset level in user_generation.py and validation.py, not per-row here |
+| TC13 | Invalid merge key (not applicable to engineer) | no exception | PASS | merge-key validity is checked in integration.py's validate='many_to_one' merges, not in feature engineering |
+| TC14 | Missing CPI context (cpi_month is NaT) | no exception | PASS | engineer() does not read cpi_month at all, so a missing CPI join has no effect on the engineered features (confirms no silent CPI-derived leakage into features) |
+| TC15 | Missing HCES benchmark | no exception | PASS | HCES is not joined per-user in this submission (see integration_log.md); no HCES field is read by engineer() |
+| TC16 | Division by zero (income=0, tested again with liabilities>assets) | no exception | PASS | safe_div avoids ZeroDivisionError; net_worth correctly goes negative |
+| TC17 | Negative savings (expenses > income) | no exception | PASS | monthly_savings correctly reflects post-expense, post-EMI cash flow |
+| TC18 | Extreme EMI (EMI > income) | no exception | PASS | disposable_income correctly goes deeply negative; not clipped or hidden |
+| TC19 | Invalid categorical value passthrough | no exception | PASS | engineer() performs no categorical validation; categorical validity (financial_goal, risk_tolerance) is a generation-time check in user_generation.py |
+| TC20 | Zero-horizon goal (goal_year == reference year) | no exception | PASS | future_goal_cost correctly reduces to goal_amount with (1+r)^0 = 1 at zero horizon |

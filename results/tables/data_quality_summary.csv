@@ -1,0 +1,16 @@
+section,check,result
+schema,all_required_columns_present,PASS
+identifier,unique_user_ids,PASS
+identifier,valid_city_keys,PASS
+range,income_positive,PASS
+range,expenses_nonneg,PASS
+range,assets_nonneg,PASS
+range,liabilities_nonneg,PASS
+range,investments_nonneg,PASS
+range,family_size_ge1,PASS
+range,dependents_nonneg,PASS
+range,dependents_le_family_size,PASS
+range,goal_amount_nonneg,PASS
+range,goal_horizon_nonneg,PASS
+merge,no_unexplained_user_loss,PASS
+merge,no_row_multiplication,PASS
