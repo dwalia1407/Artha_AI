@@ -1,0 +1,15 @@
+{
+  "Bank Fees & Charges": 0,
+  "Eating Out": 1,
+  "Education & Children": 2,
+  "Entertainment & Subscriptions": 3,
+  "Groceries": 4,
+  "Healthcare": 5,
+  "Housing/Rent": 6,
+  "Insurance": 7,
+  "Personal Care": 8,
+  "Shopping & Clothing": 9,
+  "Transportation & Gas": 10,
+  "Travel": 11,
+  "Utilities": 12
+}

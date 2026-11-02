@@ -1,0 +1,540 @@
+transaction_id,description,category,group_id
+synthetic-row-0002,IMPS-<REFERENCE>-<NAME> <NAME>-YES BANK-Zepto,Groceries,imps
+synthetic-row-0006,monthly rent paid via Housing.com Rent,Housing/Rent,natural_language
+synthetic-row-0007,IMPS-<REFERENCE>-<NAME> <NAME>-YES BANK-Housing.com Rent,Housing/Rent,imps
+synthetic-row-0009,bought vegetables and essentials at BigBasket,Groceries,natural_language
+synthetic-row-0010,Airbnb,Travel,bare_merchant
+synthetic-row-0012,rent transfer to landlord via NoBroker Rent Payment,Housing/Rent,natural_language
+synthetic-row-0013,Max Fashion CHENNAI IN,Shopping & Clothing,merchant_city
+synthetic-row-0014,grocery order from JioMart Grocery,Groceries,natural_language
+synthetic-row-0015,UPI-24Seven-<HANDLE>-AXIS-<REFERENCE>-UPI,Groceries,upi_dash
+synthetic-row-0016,IMPS-<REFERENCE>-<NAME> <NAME>-SBI-PVR Cinemas,Entertainment & Subscriptions,imps
+synthetic-row-0020,paid IRCTC for a ride,Transportation & Gas,natural_language
+synthetic-row-0021,UPI/ICICI Prudential/<HANDLE>/Payment/SBI,Insurance,upi_slash
+synthetic-row-0022,UPI-Vedantu-<HANDLE>-SBI-<REFERENCE>-UPI,Education & Children,upi_dash
+synthetic-row-0023,SMS Alert Charges Ref#<REFERENCE>,Bank Fees & Charges,merchant_reference
+synthetic-row-0025,purchased prescription at Netmeds,Healthcare,natural_language
+synthetic-row-0026,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-HDFC Life Insurance,Insurance,neft
+synthetic-row-0027,Late Payment Fee deducted from account,Bank Fees & Charges,natural_language
+synthetic-row-0029,Sony LIV,Entertainment & Subscriptions,bare_merchant
+synthetic-row-0030,UPI-SMS Alert Charges-<HANDLE>-IDFC-<REFERENCE>-UPI,Bank Fees & Charges,upi_dash
+synthetic-row-0032,IMPS-<REFERENCE>-<NAME> <NAME>-ICICI-BESCOM,Utilities,imps
+synthetic-row-0033,children's activity payment to EuroKids,Education & Children,natural_language
+synthetic-row-0034,Adani Electricity BANGALORE IN,Utilities,merchant_city
+synthetic-row-0036,pharmacy bill paid at Practo Pharmacy,Healthcare,natural_language
+synthetic-row-0037,Practo Pharmacy Ref#<REFERENCE>,Healthcare,merchant_reference
+synthetic-row-0038,ACH/TP ACH Airtel Postpaid <REFERENCE>,Utilities,ach
+synthetic-row-0039,POS Sportskids Academy HYDERABAD,Education & Children,pos
+synthetic-row-0040,hotel booked through Cleartrip,Travel,natural_language
+synthetic-row-0041,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-Nykaa Fashion,Shopping & Clothing,neft
+synthetic-row-0042,Cuemath Ref#<REFERENCE>,Education & Children,merchant_reference
+synthetic-row-0043,POS Practo Pharmacy DELHI,Healthcare,pos
+synthetic-row-0045,Urban Company Ref#<REFERENCE>,Personal Care,merchant_reference
+synthetic-row-0048,IMPS-<REFERENCE>-<NAME> <NAME>-ICICI-Housing.com Rent,Housing/Rent,imps
+synthetic-row-0049,POS Overdraft Interest Charge PUNE,Bank Fees & Charges,pos
+synthetic-row-0051,train ticket booked via Cleartrip,Travel,natural_language
+synthetic-row-0053,UPI-Max Bupa Health-<HANDLE>-HDFC-<REFERENCE>-UPI,Insurance,upi_dash
+synthetic-row-0055,UPI-PharmEasy-<HANDLE>-SBI-<REFERENCE>-UPI,Healthcare,upi_dash
+synthetic-row-0056,POS HP Petrol Pump HYDERABAD,Transportation & Gas,pos
+synthetic-row-0059,IMPS-<REFERENCE>-<NAME> <NAME>-IDFC-BigBasket,Groceries,imps
+synthetic-row-0060,Practo Consultation PUNE IN,Healthcare,merchant_city
+synthetic-row-0067,ACH/TP ACH Cadabams Hospital <REFERENCE>,Healthcare,ach
+synthetic-row-0068,ACH/TP ACH Fortis Healthcare <REFERENCE>,Healthcare,ach
+synthetic-row-0069,utility bill for Airtel Postpaid,Utilities,natural_language
+synthetic-row-0072,ACH/TP ACH Blinkit <REFERENCE>,Groceries,ach
+synthetic-row-0073,HDFC Life Insurance Ref#<REFERENCE>,Insurance,merchant_reference
+synthetic-row-0075,INOX Movies Ref#<REFERENCE>,Entertainment & Subscriptions,merchant_reference
+synthetic-row-0080,Amazon Shopping BANGALORE IN,Shopping & Clothing,merchant_city
+synthetic-row-0081,POS Late Payment Fee GURGAON,Bank Fees & Charges,pos
+synthetic-row-0082,pharmacy bill paid at Wellness Forever,Healthcare,natural_language
+synthetic-row-0084,kids class fee paid to Kumon Learning,Education & Children,natural_language
+synthetic-row-0085,IMPS-<REFERENCE>-<NAME> <NAME>-YES BANK-PVR Cinemas,Entertainment & Subscriptions,imps
+synthetic-row-0087,ACH/TP ACH Akasa Air <REFERENCE>,Travel,ach
+synthetic-row-0096,rent transfer to landlord via Housing.com Rent,Housing/Rent,natural_language
+synthetic-row-0097,BigBasket Ref#<REFERENCE>,Groceries,merchant_reference
+synthetic-row-0098,Property Owner NEFT,Housing/Rent,bare_merchant
+synthetic-row-0100,RedBus Ref#<REFERENCE>,Travel,merchant_reference
+synthetic-row-0101,bought vegetables and essentials at Blinkit,Groceries,natural_language
+synthetic-row-0103,POS YouTube Premium BANGALORE,Entertainment & Subscriptions,pos
+synthetic-row-0104,UPI/Amazon Prime Video/<HANDLE>/Payment/AXIS,Entertainment & Subscriptions,upi_slash
+synthetic-row-0111,UPI-School Fee Payment-<HANDLE>-HDFC-<REFERENCE>-UPI,Education & Children,upi_dash
+synthetic-row-0113,paid Reliance Trends for new outfit,Shopping & Clothing,natural_language
+synthetic-row-0115,UPI-Bharat Petroleum-<HANDLE>-IDFC-<REFERENCE>-UPI,Transportation & Gas,upi_dash
+synthetic-row-0116,UPI-McDonald's-<HANDLE>-SBI-<REFERENCE>-UPI,Eating Out,upi_dash
+synthetic-row-0119,UPI/BSES Rajdhani/<HANDLE>/Payment/IDFC,Utilities,upi_slash
+synthetic-row-0120,POS HDFC Life Insurance DELHI,Insurance,pos
+synthetic-row-0123,NEFT Dr-IDFC<REFERENCE>-<NAME> <NAME>-NoBroker Rent Payment,Housing/Rent,neft
+synthetic-row-0124,NEFT Dr-IDFC<REFERENCE>-<NAME> <NAME>-H&M,Shopping & Clothing,neft
+synthetic-row-0125,paid 24Seven for groceries,Groceries,natural_language
+synthetic-row-0126,UPI/BSES Rajdhani/<HANDLE>/Payment/AXIS,Utilities,upi_slash
+synthetic-row-0128,ACH/TP ACH College Tuition NEFT <REFERENCE>,Education & Children,ach
+synthetic-row-0129,bought medicines from MedPlus,Healthcare,natural_language
+synthetic-row-0130,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-Barbeque Nation,Eating Out,neft
+synthetic-row-0131,UPI/GST on Bank Charges/<HANDLE>/Payment/AXIS,Bank Fees & Charges,upi_slash
+synthetic-row-0132,IMPS-<REFERENCE>-<NAME> <NAME>-ICICI-Sushil Medical Store,Healthcare,imps
+synthetic-row-0134,HP Petrol Pump Ref#<REFERENCE>,Transportation & Gas,merchant_reference
+synthetic-row-0136,lunch bill paid at Cafe Coffee Day,Eating Out,natural_language
+synthetic-row-0137,POS Annual Card Fee BANGALORE,Bank Fees & Charges,pos
+synthetic-row-0140,NEFT Dr-IDFC<REFERENCE>-<NAME> <NAME>-Apple Music,Entertainment & Subscriptions,neft
+synthetic-row-0141,JioHotstar subscription auto debit,Entertainment & Subscriptions,natural_language
+synthetic-row-0142,NEFT Dr-ICICI<REFERENCE>-<NAME> <NAME>-Zomato,Eating Out,neft
+synthetic-row-0143,bought clothes online from Ajio,Shopping & Clothing,natural_language
+synthetic-row-0146,Lakme Salon MUMBAI IN,Personal Care,merchant_city
+synthetic-row-0147,UPI-Overdraft Interest Charge-<HANDLE>-AXIS-<REFERENCE>-UPI,Bank Fees & Charges,upi_dash
+synthetic-row-0148,medical checkup payment to Narayana Health,Healthcare,natural_language
+synthetic-row-0149,Flipkart Ref#<REFERENCE>,Shopping & Clothing,merchant_reference
+synthetic-row-0155,EuroKids GURGAON IN,Education & Children,merchant_city
+synthetic-row-0156,ACH/TP ACH Cuemath <REFERENCE>,Education & Children,ach
+synthetic-row-0157,dinner at Starbucks Coffee with friends,Eating Out,natural_language
+synthetic-row-0158,bought vegetables and essentials at Swiggy Instamart,Groceries,natural_language
+synthetic-row-0162,NEFT Dr-KOTAK<REFERENCE>-<NAME> <NAME>-Reliance Trends,Shopping & Clothing,neft
+synthetic-row-0165,weekly grocery shopping at Star Bazaar,Groceries,natural_language
+synthetic-row-0167,IMPS-<REFERENCE>-<NAME> <NAME>-SBI-Housing.com Rent,Housing/Rent,imps
+synthetic-row-0168,NEFT Dr-IDFC<REFERENCE>-<NAME> <NAME>-Kumon Learning,Education & Children,neft
+synthetic-row-0169,weekly grocery shopping at More Supermarket,Groceries,natural_language
+synthetic-row-0170,ACH/TP ACH Bajaj Allianz <REFERENCE>,Insurance,ach
+synthetic-row-0171,online purchase from Myntra,Shopping & Clothing,natural_language
+synthetic-row-0172,POS Max Healthcare BANGALORE,Healthcare,pos
+synthetic-row-0174,shopping order placed on Nykaa Fashion,Shopping & Clothing,natural_language
+synthetic-row-0176,UPI/Airtel Postpaid/<HANDLE>/Payment/HDFC,Utilities,upi_slash
+synthetic-row-0179,Late Payment Fee Ref#<REFERENCE>,Bank Fees & Charges,merchant_reference
+synthetic-row-0180,bank charged Annual Card Fee,Bank Fees & Charges,natural_language
+synthetic-row-0184,UPI/McDonald's/<HANDLE>/Payment/HDFC,Eating Out,upi_slash
+synthetic-row-0186,UPI-INOX Movies-<HANDLE>-KOTAK-<REFERENCE>-UPI,Entertainment & Subscriptions,upi_dash
+synthetic-row-0187,UPI/Jio Fiber/<HANDLE>/Payment/ICICI,Utilities,upi_slash
+synthetic-row-0188,UPI/Bangalore Water Board/<HANDLE>/Payment/ICICI,Utilities,upi_slash
+synthetic-row-0189,ACH/TP ACH Air India <REFERENCE>,Travel,ach
+synthetic-row-0190,shopping order placed on Max Fashion,Shopping & Clothing,natural_language
+synthetic-row-0191,hospital bill paid to Columbia Asia,Healthcare,natural_language
+synthetic-row-0192,dinner at Zomato with friends,Eating Out,natural_language
+synthetic-row-0193,NEFT Dr-AXIS<REFERENCE>-<NAME> <NAME>-INOX Movies,Entertainment & Subscriptions,neft
+synthetic-row-0194,lunch bill paid at Domino's Pizza,Eating Out,natural_language
+synthetic-row-0195,Late Payment Fee PUNE IN,Bank Fees & Charges,merchant_city
+synthetic-row-0197,Fortis Healthcare Ref#<REFERENCE>,Healthcare,merchant_reference
+synthetic-row-0199,monthly rent paid via NoBroker Rent Payment,Housing/Rent,natural_language
+synthetic-row-0201,NEFT Dr-SBI<REFERENCE>-<NAME> <NAME>-BYJU'S,Education & Children,neft
+synthetic-row-0202,NEFT Dr-HDFC<REFERENCE>-<NAME> <NAME>-PharmEasy,Healthcare,neft
+synthetic-row-0204,UPI/Manipal Hospital/<HANDLE>/Payment/SBI,Healthcare,upi_slash
+synthetic-row-0208,ACH/TP ACH Urban Company <REFERENCE>,Personal Care,ach
+synthetic-row-0209,IMPS-<REFERENCE>-<NAME> <NAME>-AXIS-ICICI Prudential,Insurance,imps
+synthetic-row-0210,salon appointment at Urban Company,Personal Care,natural_language
+synthetic-row-0214,bank charged Overdraft Interest Charge,Bank Fees & Charges,natural_language
+synthetic-row-0215,insurance premium paid to Max Bupa Health,Insurance,natural_language
+synthetic-row-0216,annual premium for HDFC Life Insurance,Insurance,natural_language
+synthetic-row-0218,IMPS-<REFERENCE>-<NAME> <NAME>-YES BANK-JioMart Grocery,Groceries,imps
+synthetic-row-0219,Unacademy PUNE IN,Education & Children,merchant_city
+synthetic-row-0222,NEFT Dr-IDFC<REFERENCE>-<NAME> <NAME>-Park+ Parking,Transportation & Gas,neft
+synthetic-row-0226,NEFT Dr-HDFC<REFERENCE>-<NAME> <NAME>-Star Health Insurance,Insurance,neft
+synthetic-row-0227,Max Bupa Health policy renewal payment,Insurance,natural_language
+synthetic-row-0229,UPI-Cadabams Hospital-<HANDLE>-YES BANK-<REFERENCE>-UPI,Healthcare,upi_dash
+synthetic-row-0230,UPI/Chai Point/<HANDLE>/Payment/HDFC,Eating Out,upi_slash
+synthetic-row-0232,IMPS-<REFERENCE>-<NAME> <NAME>-AXIS-Swiggy,Eating Out,imps
+synthetic-row-0233,insurance premium paid to Star Health Insurance,Insurance,natural_language
+synthetic-row-0235,kids class fee paid to EuroKids,Education & Children,natural_language
+synthetic-row-0236,IMPS-<REFERENCE>-<NAME> <NAME>-YES BANK-GST on Bank Charges,Bank Fees & Charges,imps
+synthetic-row-0240,ACH/TP ACH Cafe Coffee Day <REFERENCE>,Eating Out,ach
+synthetic-row-0242,Sportskids Academy,Education & Children,bare_merchant
+synthetic-row-0247,coffee at McDonald's,Eating Out,natural_language
+synthetic-row-0250,grocery order from Zepto,Groceries,natural_language
+synthetic-row-0253,Behrouz Biryani,Eating Out,bare_merchant
+synthetic-row-0254,NEFT Dr-HDFC<REFERENCE>-<NAME> <NAME>-Subway,Eating Out,neft
+synthetic-row-0255,HDFC Life Insurance HYDERABAD IN,Insurance,merchant_city
+synthetic-row-0256,NEFT Dr-ICICI<REFERENCE>-<NAME> <NAME>-1mg Pharmacy,Healthcare,neft
+synthetic-row-0257,Kumon Learning,Education & Children,bare_merchant
+synthetic-row-0261,UPI/Rapido/<HANDLE>/Payment/AXIS,Transportation & Gas,upi_slash
+synthetic-row-0262,NEFT Dr-SBI<REFERENCE>-<NAME> <NAME>-More Supermarket,Groceries,neft
+synthetic-row-0264,exam fee paid to School Fee Payment,Education & Children,natural_language
+synthetic-row-0267,lunch bill paid at Faasos,Eating Out,natural_language
+synthetic-row-0270,NEFT Dr-SBI<REFERENCE>-<NAME> <NAME>-Reliance Fresh,Groceries,neft
+synthetic-row-0271,POS Nykaa Fashion BANGALORE,Shopping & Clothing,pos
+synthetic-row-0273,POS Rapido CHENNAI,Transportation & Gas,pos
+synthetic-row-0274,Jawed Habib MUMBAI IN,Personal Care,merchant_city
+synthetic-row-0275,POS MedPlus HYDERABAD,Healthcare,pos
+synthetic-row-0276,paid Ola Cabs for a ride,Transportation & Gas,natural_language
+synthetic-row-0280,monthly subscription renewal for YouTube Premium,Entertainment & Subscriptions,natural_language
+synthetic-row-0281,UPI/Housing.com Rent/<HANDLE>/Payment/KOTAK,Housing/Rent,upi_slash
+synthetic-row-0282,ACH/TP ACH Tata Power <REFERENCE>,Utilities,ach
+synthetic-row-0284,ACH/TP ACH Late Payment Fee <REFERENCE>,Bank Fees & Charges,ach
+synthetic-row-0285,Housing.com Rent,Housing/Rent,bare_merchant
+synthetic-row-0288,enrolled kid in Little Millennium program,Education & Children,natural_language
+synthetic-row-0289,Indian Oil Petrol Pump BANGALORE IN,Transportation & Gas,merchant_city
+synthetic-row-0291,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-PVR Cinemas,Entertainment & Subscriptions,neft
+synthetic-row-0292,Ola Cabs PUNE IN,Transportation & Gas,merchant_city
+synthetic-row-0293,UPI/1mg Pharmacy/<HANDLE>/Payment/YES BANK,Healthcare,upi_slash
+synthetic-row-0295,Max Healthcare,Healthcare,bare_merchant
+synthetic-row-0296,HP Petrol Pump HYDERABAD IN,Transportation & Gas,merchant_city
+synthetic-row-0298,Namma Metro Ref#<REFERENCE>,Transportation & Gas,merchant_reference
+synthetic-row-0300,utility bill for Bangalore Water Board,Utilities,natural_language
+synthetic-row-0301,Apollo Pharmacy,Healthcare,bare_merchant
+synthetic-row-0302,Zomato,Eating Out,bare_merchant
+synthetic-row-0303,IMPS-<REFERENCE>-<NAME> <NAME>-AXIS-Lakme Salon,Personal Care,imps
+synthetic-row-0304,UPI/Spotify Premium/<HANDLE>/Payment/YES BANK,Entertainment & Subscriptions,upi_slash
+synthetic-row-0307,NEFT Dr-HDFC<REFERENCE>-<NAME> <NAME>-Apollo Pharmacy,Healthcare,neft
+synthetic-row-0308,NEFT Dr-KOTAK<REFERENCE>-<NAME> <NAME>-Cleartrip,Travel,neft
+synthetic-row-0310,NEFT Dr-AXIS<REFERENCE>-<NAME> <NAME>-Third Wave Coffee,Eating Out,neft
+synthetic-row-0311,semester fee via School Fee Payment,Education & Children,natural_language
+synthetic-row-0312,penalty charge: Late Payment Fee,Bank Fees & Charges,natural_language
+synthetic-row-0313,Max Fashion,Shopping & Clothing,bare_merchant
+synthetic-row-0315,IMPS-<REFERENCE>-<NAME> <NAME>-ICICI-Urban Company,Personal Care,imps
+synthetic-row-0318,rent transfer to landlord via Property Owner NEFT,Housing/Rent,natural_language
+synthetic-row-0319,paid Lifestyle Stores for new outfit,Shopping & Clothing,natural_language
+synthetic-row-0320,Vedantu,Education & Children,bare_merchant
+synthetic-row-0321,POS Cafe Coffee Day DELHI,Eating Out,pos
+synthetic-row-0322,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-Udemy,Education & Children,neft
+synthetic-row-0323,UPI-Ola Cabs-<HANDLE>-SBI-<REFERENCE>-UPI,Transportation & Gas,upi_dash
+synthetic-row-0325,POS Bachpan Play School DELHI,Education & Children,pos
+synthetic-row-0326,ACH/TP ACH MedPlus <REFERENCE>,Healthcare,ach
+synthetic-row-0328,UPI-Spencer's-<HANDLE>-ICICI-<REFERENCE>-UPI,Groceries,upi_dash
+synthetic-row-0330,NEFT Dr-IDFC<REFERENCE>-<NAME> <NAME>-Spencer's,Groceries,neft
+synthetic-row-0335,IMPS-<REFERENCE>-<NAME> <NAME>-AXIS-Coursera,Education & Children,imps
+synthetic-row-0336,More Supermarket GURGAON IN,Groceries,merchant_city
+synthetic-row-0337,ACH/TP ACH ICICI Prudential <REFERENCE>,Insurance,ach
+synthetic-row-0338,UPI/EuroKids/<HANDLE>/Payment/ICICI,Education & Children,upi_slash
+synthetic-row-0339,Overdraft Interest Charge HYDERABAD IN,Bank Fees & Charges,merchant_city
+synthetic-row-0340,OYO Rooms Ref#<REFERENCE>,Travel,merchant_reference
+synthetic-row-0341,Wellness Forever PUNE IN,Healthcare,merchant_city
+synthetic-row-0344,UPI/YouTube Premium/<HANDLE>/Payment/YES BANK,Entertainment & Subscriptions,upi_slash
+synthetic-row-0345,kids class fee paid to Sportskids Academy,Education & Children,natural_language
+synthetic-row-0347,IMPS-<REFERENCE>-<NAME> <NAME>-AXIS-Domino's Pizza,Eating Out,imps
+synthetic-row-0349,medical checkup payment to Columbia Asia,Healthcare,natural_language
+synthetic-row-0350,travel booking payment to Vistara,Travel,natural_language
+synthetic-row-0351,Kumon Learning MUMBAI IN,Education & Children,merchant_city
+synthetic-row-0353,monthly Tata Power bill payment,Utilities,natural_language
+synthetic-row-0354,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-Practo Pharmacy,Healthcare,neft
+synthetic-row-0355,salon appointment at Jawed Habib,Personal Care,natural_language
+synthetic-row-0356,semester fee via College Tuition NEFT,Education & Children,natural_language
+synthetic-row-0357,UPI/School Fee Payment/<HANDLE>/Payment/SBI,Education & Children,upi_slash
+synthetic-row-0359,IMPS-<REFERENCE>-<NAME> <NAME>-SBI-JioHotstar,Entertainment & Subscriptions,imps
+synthetic-row-0360,UPI/Ola Cabs/<HANDLE>/Payment/YES BANK,Transportation & Gas,upi_slash
+synthetic-row-0361,UPI/EuroKids/<HANDLE>/Payment/AXIS,Education & Children,upi_slash
+synthetic-row-0362,UPI/Barbeque Nation/<HANDLE>/Payment/YES BANK,Eating Out,upi_slash
+synthetic-row-0363,UPI-INOX Movies-<HANDLE>-HDFC-<REFERENCE>-UPI,Entertainment & Subscriptions,upi_dash
+synthetic-row-0366,Vedantu Ref#<REFERENCE>,Education & Children,merchant_reference
+synthetic-row-0367,IMPS-<REFERENCE>-<NAME> <NAME>-KOTAK-Star Health Insurance,Insurance,imps
+synthetic-row-0369,Bajaj Allianz policy renewal payment,Insurance,natural_language
+synthetic-row-0372,UPI/Max Bupa Health/<HANDLE>/Payment/HDFC,Insurance,upi_slash
+synthetic-row-0373,Housing.com Rent Ref#<REFERENCE>,Housing/Rent,merchant_reference
+synthetic-row-0374,PVR Cinemas Ref#<REFERENCE>,Entertainment & Subscriptions,merchant_reference
+synthetic-row-0375,bought medicines from Practo Pharmacy,Healthcare,natural_language
+synthetic-row-0376,bought medicines from Apollo Pharmacy,Healthcare,natural_language
+synthetic-row-0382,paid Namma Metro for a ride,Transportation & Gas,natural_language
+synthetic-row-0383,NEFT Dr-AXIS<REFERENCE>-<NAME> <NAME>-BYJU'S,Education & Children,neft
+synthetic-row-0384,IMPS-<REFERENCE>-<NAME> <NAME>-ICICI-Subway,Eating Out,imps
+synthetic-row-0386,1mg Pharmacy MUMBAI IN,Healthcare,merchant_city
+synthetic-row-0387,bought clothes online from Max Fashion,Shopping & Clothing,natural_language
+synthetic-row-0388,Zepto HYDERABAD IN,Groceries,merchant_city
+synthetic-row-0389,Annual Card Fee deducted from account,Bank Fees & Charges,natural_language
+synthetic-row-0390,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-JioMart Grocery,Groceries,neft
+synthetic-row-0391,UPI-Swiggy Instamart-<HANDLE>-AXIS-<REFERENCE>-UPI,Groceries,upi_dash
+synthetic-row-0394,IMPS-<REFERENCE>-<NAME> <NAME>-HDFC-NoBroker Rent Payment,Housing/Rent,imps
+synthetic-row-0395,ACH/TP ACH Amazon Shopping <REFERENCE>,Shopping & Clothing,ach
+synthetic-row-0396,UPI-Apollo Pharmacy-<HANDLE>-YES BANK-<REFERENCE>-UPI,Healthcare,upi_dash
+synthetic-row-0401,NEFT Dr-AXIS<REFERENCE>-<NAME> <NAME>-IRCTC,Transportation & Gas,neft
+synthetic-row-0402,weekly grocery shopping at BigBasket,Groceries,natural_language
+synthetic-row-0403,ACH/TP ACH Kidzee <REFERENCE>,Education & Children,ach
+synthetic-row-0404,IMPS-<REFERENCE>-<NAME> <NAME>-KOTAK-1mg Pharmacy,Healthcare,imps
+synthetic-row-0405,paid Swiggy Instamart for groceries,Groceries,natural_language
+synthetic-row-0407,Naturals Salon GURGAON IN,Personal Care,merchant_city
+synthetic-row-0412,JioHotstar Ref#<REFERENCE>,Entertainment & Subscriptions,merchant_reference
+synthetic-row-0415,paid Urban Company for a haircut,Personal Care,natural_language
+synthetic-row-0418,BigBasket PUNE IN,Groceries,merchant_city
+synthetic-row-0419,monthly subscription renewal for JioHotstar,Entertainment & Subscriptions,natural_language
+synthetic-row-0420,IMPS-<REFERENCE>-<NAME> <NAME>-YES BANK-INOX Movies,Entertainment & Subscriptions,imps
+synthetic-row-0421,POS Cadabams Hospital BANGALORE,Healthcare,pos
+synthetic-row-0424,annual premium for Star Health Insurance,Insurance,natural_language
+synthetic-row-0428,dinner at Behrouz Biryani with friends,Eating Out,natural_language
+synthetic-row-0429,doctor consultation fee at Columbia Asia,Healthcare,natural_language
+synthetic-row-0431,NEFT Dr-AXIS<REFERENCE>-<NAME> <NAME>-Flipkart,Shopping & Clothing,neft
+synthetic-row-0432,IMPS-<REFERENCE>-<NAME> <NAME>-KOTAK-Zomato,Eating Out,imps
+synthetic-row-0433,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-Behrouz Biryani,Eating Out,neft
+synthetic-row-0434,internet bill paid to ACT Fibernet,Utilities,natural_language
+synthetic-row-0436,children's activity payment to Kidzee,Education & Children,natural_language
+synthetic-row-0437,Columbia Asia PUNE IN,Healthcare,merchant_city
+synthetic-row-0441,ordered food from Zomato,Eating Out,natural_language
+synthetic-row-0442,SMS Alert Charges Ref#<REFERENCE>,Bank Fees & Charges,merchant_reference
+synthetic-row-0444,bought medicines from Wellness Forever,Healthcare,natural_language
+synthetic-row-0445,GST on Bank Charges Ref#<REFERENCE>,Bank Fees & Charges,merchant_reference
+synthetic-row-0446,UPI/Urban Company/<HANDLE>/Payment/KOTAK,Personal Care,upi_slash
+synthetic-row-0448,Columbia Asia,Healthcare,bare_merchant
+synthetic-row-0450,bank charged SMS Alert Charges,Bank Fees & Charges,natural_language
+synthetic-row-0451,UPI-BookMyShow-<HANDLE>-ICICI-<REFERENCE>-UPI,Entertainment & Subscriptions,upi_dash
+synthetic-row-0453,POS Bharat Petroleum BANGALORE,Transportation & Gas,pos
+synthetic-row-0455,Bachpan Play School Ref#<REFERENCE>,Education & Children,merchant_reference
+synthetic-row-0456,Uber,Transportation & Gas,bare_merchant
+synthetic-row-0457,Lakme Salon Ref#<REFERENCE>,Personal Care,merchant_reference
+synthetic-row-0459,ACH/TP ACH NoBroker Rent Payment <REFERENCE>,Housing/Rent,ach
+synthetic-row-0462,UPI/HP Petrol Pump/<HANDLE>/Payment/SBI,Transportation & Gas,upi_slash
+synthetic-row-0463,ACH/TP ACH Bajaj Allianz <REFERENCE>,Insurance,ach
+synthetic-row-0465,IMPS-<REFERENCE>-<NAME> <NAME>-IDFC-Housing.com Rent,Housing/Rent,imps
+synthetic-row-0466,UPI/YesMadam/<HANDLE>/Payment/IDFC,Personal Care,upi_slash
+synthetic-row-0467,pharmacy bill paid at Apollo Pharmacy,Healthcare,natural_language
+synthetic-row-0470,medical checkup payment to Fortis Healthcare,Healthcare,natural_language
+synthetic-row-0471,Faasos CHENNAI IN,Eating Out,merchant_city
+synthetic-row-0472,Narayana Health Ref#<REFERENCE>,Healthcare,merchant_reference
+synthetic-row-0473,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-Subway,Eating Out,neft
+synthetic-row-0475,UPI/Sportskids Academy/<HANDLE>/Payment/SBI,Education & Children,upi_slash
+synthetic-row-0476,BESCOM HYDERABAD IN,Utilities,merchant_city
+synthetic-row-0477,purchased prescription at MedPlus,Healthcare,natural_language
+synthetic-row-0479,NEFT Dr-IDFC<REFERENCE>-<NAME> <NAME>-Max Bupa Health,Insurance,neft
+synthetic-row-0480,monthly rent paid via Property Owner NEFT,Housing/Rent,natural_language
+synthetic-row-0481,IMPS-<REFERENCE>-<NAME> <NAME>-AXIS-MakeMyTrip,Travel,imps
+synthetic-row-0483,IMPS-<REFERENCE>-<NAME> <NAME>-IDFC-Flipkart,Shopping & Clothing,imps
+synthetic-row-0484,IRCTC Ref#<REFERENCE>,Transportation & Gas,merchant_reference
+synthetic-row-0486,flight booking on Vistara,Travel,natural_language
+synthetic-row-0487,travel booking payment to Air India,Travel,natural_language
+synthetic-row-0489,Columbia Asia Ref#<REFERENCE>,Healthcare,merchant_reference
+synthetic-row-0490,Housing.com Rent GURGAON IN,Housing/Rent,merchant_city
+synthetic-row-0491,UPI/Netmeds/<HANDLE>/Payment/HDFC,Healthcare,upi_slash
+synthetic-row-0492,Barbeque Nation,Eating Out,bare_merchant
+synthetic-row-0494,ACH/TP ACH College Tuition NEFT <REFERENCE>,Education & Children,ach
+synthetic-row-0495,Vedantu Ref#<REFERENCE>,Education & Children,merchant_reference
+synthetic-row-0498,Little Millennium Ref#<REFERENCE>,Education & Children,merchant_reference
+synthetic-row-0500,bought medicines from PharmEasy,Healthcare,natural_language
+synthetic-row-0501,UPI-Property Owner NEFT-<HANDLE>-YES BANK-<REFERENCE>-UPI,Housing/Rent,upi_dash
+synthetic-row-0503,IMPS-<REFERENCE>-<NAME> <NAME>-KOTAK-Cult.fit,Personal Care,imps
+synthetic-row-0504,Vodafone Idea GURGAON IN,Utilities,merchant_city
+synthetic-row-0506,POS Vodafone Idea DELHI,Utilities,pos
+synthetic-row-0512,doctor consultation fee at Practo Consultation,Healthcare,natural_language
+synthetic-row-0513,UPI/Sushil Medical Store/<HANDLE>/Payment/YES BANK,Healthcare,upi_slash
+synthetic-row-0514,UPI-IRCTC-<HANDLE>-IDFC-<REFERENCE>-UPI,Transportation & Gas,upi_dash
+synthetic-row-0515,IMPS-<REFERENCE>-<NAME> <NAME>-YES BANK-Sushil Medical Store,Healthcare,imps
+synthetic-row-0516,grocery order from BigBasket,Groceries,natural_language
+synthetic-row-0518,UPI-NoBroker Rent Payment-<HANDLE>-ICICI-<REFERENCE>-UPI,Housing/Rent,upi_dash
+synthetic-row-0519,Unacademy,Education & Children,bare_merchant
+synthetic-row-0521,pharmacy bill paid at 1mg Pharmacy,Healthcare,natural_language
+synthetic-row-0523,Annual Card Fee,Bank Fees & Charges,bare_merchant
+synthetic-row-0526,UPI-Netflix-<HANDLE>-IDFC-<REFERENCE>-UPI,Entertainment & Subscriptions,upi_dash
+synthetic-row-0529,Max Bupa Health,Insurance,bare_merchant
+synthetic-row-0530,Jio Fiber Ref#<REFERENCE>,Utilities,merchant_reference
+synthetic-row-0534,Apollo Hospitals,Healthcare,bare_merchant
+synthetic-row-0538,IMPS-<REFERENCE>-<NAME> <NAME>-IDFC-Bachpan Play School,Education & Children,imps
+synthetic-row-0539,ACH/TP ACH Practo Pharmacy <REFERENCE>,Healthcare,ach
+synthetic-row-0540,monthly Jio Fiber bill payment,Utilities,natural_language
+synthetic-row-0541,UPI-IndiGo Airlines-<HANDLE>-ICICI-<REFERENCE>-UPI,Travel,upi_dash
+synthetic-row-0546,hotel booked through MakeMyTrip,Travel,natural_language
+synthetic-row-0547,BSES Rajdhani,Utilities,bare_merchant
+synthetic-row-0548,Property Owner NEFT Ref#<REFERENCE>,Housing/Rent,merchant_reference
+synthetic-row-0549,Bachpan Play School DELHI IN,Education & Children,merchant_city
+synthetic-row-0551,bought vegetables and essentials at Spencer's,Groceries,natural_language
+synthetic-row-0554,bought medicines from 1mg Pharmacy,Healthcare,natural_language
+synthetic-row-0555,annual premium for ICICI Prudential,Insurance,natural_language
+synthetic-row-0557,POS Star Bazaar CHENNAI,Groceries,pos
+synthetic-row-0558,purchased prescription at 1mg Pharmacy,Healthcare,natural_language
+synthetic-row-0560,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-Flipkart,Shopping & Clothing,neft
+synthetic-row-0561,Spencer's MUMBAI IN,Groceries,merchant_city
+synthetic-row-0565,coffee at Subway,Eating Out,natural_language
+synthetic-row-0566,POS Annual Card Fee HYDERABAD,Bank Fees & Charges,pos
+synthetic-row-0568,paid Lakme Salon for a haircut,Personal Care,natural_language
+synthetic-row-0569,Practo Pharmacy MUMBAI IN,Healthcare,merchant_city
+synthetic-row-0570,Cleartrip,Travel,bare_merchant
+synthetic-row-0571,IMPS-<REFERENCE>-<NAME> <NAME>-HDFC-Vistara,Travel,imps
+synthetic-row-0572,movie tickets booked on PVR Cinemas,Entertainment & Subscriptions,natural_language
+synthetic-row-0575,paid Star Bazaar for groceries,Groceries,natural_language
+synthetic-row-0577,College Tuition NEFT,Education & Children,bare_merchant
+synthetic-row-0578,NEFT Dr-HDFC<REFERENCE>-<NAME> <NAME>-Akasa Air,Travel,neft
+synthetic-row-0579,NoBroker Rent Payment,Housing/Rent,bare_merchant
+synthetic-row-0582,coffee at Third Wave Coffee,Eating Out,natural_language
+synthetic-row-0584,lab test fee at Narayana Health,Healthcare,natural_language
+synthetic-row-0586,NEFT Dr-IDFC<REFERENCE>-<NAME> <NAME>-Overdraft Interest Charge,Bank Fees & Charges,neft
+synthetic-row-0588,Max Healthcare Ref#<REFERENCE>,Healthcare,merchant_reference
+synthetic-row-0589,IMPS-<REFERENCE>-<NAME> <NAME>-SBI-Bachpan Play School,Education & Children,imps
+synthetic-row-0591,paid electricity bill to Adani Electricity,Utilities,natural_language
+synthetic-row-0592,UPI-SMS Alert Charges-<HANDLE>-HDFC-<REFERENCE>-UPI,Bank Fees & Charges,upi_dash
+synthetic-row-0594,tuition fee paid to Vedantu,Education & Children,natural_language
+synthetic-row-0595,UPI-Practo Pharmacy-<HANDLE>-AXIS-<REFERENCE>-UPI,Healthcare,upi_dash
+synthetic-row-0596,Netmeds,Healthcare,bare_merchant
+synthetic-row-0598,Sushil Medical Store Ref#<REFERENCE>,Healthcare,merchant_reference
+synthetic-row-0602,UPI-Naturals Salon-<HANDLE>-ICICI-<REFERENCE>-UPI,Personal Care,upi_dash
+synthetic-row-0603,BigBasket HYDERABAD IN,Groceries,merchant_city
+synthetic-row-0605,shopping order placed on H&M,Shopping & Clothing,natural_language
+synthetic-row-0607,Ola Cabs,Transportation & Gas,bare_merchant
+synthetic-row-0608,POS FASTag Recharge CHENNAI,Transportation & Gas,pos
+synthetic-row-0609,IMPS-<REFERENCE>-<NAME> <NAME>-HDFC-Udemy,Education & Children,imps
+synthetic-row-0610,spa session payment at YesMadam,Personal Care,natural_language
+synthetic-row-0612,ACH/TP ACH Tata Power <REFERENCE>,Utilities,ach
+synthetic-row-0613,utility bill for ACT Fibernet,Utilities,natural_language
+synthetic-row-0614,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-College Tuition NEFT,Education & Children,neft
+synthetic-row-0615,NoBroker Rent Payment Ref#<REFERENCE>,Housing/Rent,merchant_reference
+synthetic-row-0618,LIC Premium policy renewal payment,Insurance,natural_language
+synthetic-row-0623,Adani Electricity CHENNAI IN,Utilities,merchant_city
+synthetic-row-0624,Overdraft Interest Charge deducted from account,Bank Fees & Charges,natural_language
+synthetic-row-0625,paid electricity bill to BSES Rajdhani,Utilities,natural_language
+synthetic-row-0629,UPI/Lakme Salon/<HANDLE>/Payment/SBI,Personal Care,upi_slash
+synthetic-row-0630,GST on Bank Charges CHENNAI IN,Bank Fees & Charges,merchant_city
+synthetic-row-0632,POS School Fee Payment PUNE,Education & Children,pos
+synthetic-row-0633,NEFT Dr-IDFC<REFERENCE>-<NAME> <NAME>-Housing.com Rent,Housing/Rent,neft
+synthetic-row-0636,UPI/H&M/<HANDLE>/Payment/HDFC,Shopping & Clothing,upi_slash
+synthetic-row-0638,HP Petrol Pump GURGAON IN,Transportation & Gas,merchant_city
+synthetic-row-0640,OYO Rooms Ref#<REFERENCE>,Travel,merchant_reference
+synthetic-row-0641,Property Owner NEFT DELHI IN,Housing/Rent,merchant_city
+synthetic-row-0642,IMPS-<REFERENCE>-<NAME> <NAME>-KOTAK-School Fee Payment,Education & Children,imps
+synthetic-row-0643,Practo Pharmacy PUNE IN,Healthcare,merchant_city
+synthetic-row-0645,bought clothes online from Flipkart,Shopping & Clothing,natural_language
+synthetic-row-0646,Faasos Ref#<REFERENCE>,Eating Out,merchant_reference
+synthetic-row-0647,UPI/Akasa Air/<HANDLE>/Payment/IDFC,Travel,upi_slash
+synthetic-row-0649,UPI/Bajaj Allianz/<HANDLE>/Payment/KOTAK,Insurance,upi_slash
+synthetic-row-0656,flight booking on Cleartrip,Travel,natural_language
+synthetic-row-0657,IMPS-<REFERENCE>-<NAME> <NAME>-ICICI-Blinkit,Groceries,imps
+synthetic-row-0661,IMPS-<REFERENCE>-<NAME> <NAME>-ICICI-Nature's Basket,Groceries,imps
+synthetic-row-0662,NEFT Dr-IDFC<REFERENCE>-<NAME> <NAME>-Fortis Healthcare,Healthcare,neft
+synthetic-row-0664,UPI/HP Petrol Pump/<HANDLE>/Payment/AXIS,Transportation & Gas,upi_slash
+synthetic-row-0667,NEFT Dr-SBI<REFERENCE>-<NAME> <NAME>-Star Health Insurance,Insurance,neft
+synthetic-row-0668,Nykaa Fashion Ref#<REFERENCE>,Shopping & Clothing,merchant_reference
+synthetic-row-0669,ACH/TP ACH Air India <REFERENCE>,Travel,ach
+synthetic-row-0671,ACH/TP ACH GST on Bank Charges <REFERENCE>,Bank Fees & Charges,ach
+synthetic-row-0672,doctor consultation fee at Narayana Health,Healthcare,natural_language
+synthetic-row-0674,salon appointment at YesMadam,Personal Care,natural_language
+synthetic-row-0678,POS Overdraft Interest Charge HYDERABAD,Bank Fees & Charges,pos
+synthetic-row-0679,UPI-24Seven-<HANDLE>-YES BANK-<REFERENCE>-UPI,Groceries,upi_dash
+synthetic-row-0684,ACH/TP ACH Bachpan Play School <REFERENCE>,Education & Children,ach
+synthetic-row-0685,IMPS-<REFERENCE>-<NAME> <NAME>-HDFC-Property Owner NEFT,Housing/Rent,imps
+synthetic-row-0687,UPI-More Supermarket-<HANDLE>-AXIS-<REFERENCE>-UPI,Groceries,upi_dash
+synthetic-row-0688,Cleartrip Ref#<REFERENCE>,Travel,merchant_reference
+synthetic-row-0690,UPI-Coursera-<HANDLE>-YES BANK-<REFERENCE>-UPI,Education & Children,upi_dash
+synthetic-row-0691,annual premium for LIC Premium,Insurance,natural_language
+synthetic-row-0692,exam fee paid to College Tuition NEFT,Education & Children,natural_language
+synthetic-row-0694,POS Star Health Insurance BANGALORE,Insurance,pos
+synthetic-row-0695,POS Property Owner NEFT CHENNAI,Housing/Rent,pos
+synthetic-row-0697,IMPS-<REFERENCE>-<NAME> <NAME>-YES BANK-Vodafone Idea,Utilities,imps
+synthetic-row-0700,UPI-H&M-<HANDLE>-ICICI-<REFERENCE>-UPI,Shopping & Clothing,upi_dash
+synthetic-row-0702,POS Naturals Salon DELHI,Personal Care,pos
+synthetic-row-0704,shopping order placed on Reliance Trends,Shopping & Clothing,natural_language
+synthetic-row-0706,Cult.fit PUNE IN,Personal Care,merchant_city
+synthetic-row-0710,IndiGo Airlines Ref#<REFERENCE>,Travel,merchant_reference
+synthetic-row-0711,UPI-Housing.com Rent-<HANDLE>-IDFC-<REFERENCE>-UPI,Housing/Rent,upi_dash
+synthetic-row-0712,bought clothes online from Myntra,Shopping & Clothing,natural_language
+synthetic-row-0713,Zepto Ref#<REFERENCE>,Groceries,merchant_reference
+synthetic-row-0714,NEFT Dr-HDFC<REFERENCE>-<NAME> <NAME>-SMS Alert Charges,Bank Fees & Charges,neft
+synthetic-row-0715,JioMart Grocery,Groceries,bare_merchant
+synthetic-row-0716,ICICI Prudential Ref#<REFERENCE>,Insurance,merchant_reference
+synthetic-row-0717,Spotify Premium subscription auto debit,Entertainment & Subscriptions,natural_language
+synthetic-row-0718,UPI/LIC Premium/<HANDLE>/Payment/HDFC,Insurance,upi_slash
+synthetic-row-0719,Urban Company DELHI IN,Personal Care,merchant_city
+synthetic-row-0720,ACH/TP ACH Practo Pharmacy <REFERENCE>,Healthcare,ach
+synthetic-row-0722,Overdraft Interest Charge GURGAON IN,Bank Fees & Charges,merchant_city
+synthetic-row-0723,POS College Tuition NEFT HYDERABAD,Education & Children,pos
+synthetic-row-0724,NEFT Dr-AXIS<REFERENCE>-<NAME> <NAME>-Property Owner NEFT,Housing/Rent,neft
+synthetic-row-0725,Park+ Parking,Transportation & Gas,bare_merchant
+synthetic-row-0726,Ola Cabs DELHI IN,Transportation & Gas,merchant_city
+synthetic-row-0729,UPI-Kumon Learning-<HANDLE>-KOTAK-<REFERENCE>-UPI,Education & Children,upi_dash
+synthetic-row-0733,ACH/TP ACH ACT Fibernet <REFERENCE>,Utilities,ach
+synthetic-row-0736,UPI-HDFC Life Insurance-<HANDLE>-IDFC-<REFERENCE>-UPI,Insurance,upi_dash
+synthetic-row-0737,IMPS-<REFERENCE>-<NAME> <NAME>-AXIS-IRCTC,Transportation & Gas,imps
+synthetic-row-0739,UPI/Vodafone Idea/<HANDLE>/Payment/YES BANK,Utilities,upi_slash
+synthetic-row-0740,ACH/TP ACH Vedantu <REFERENCE>,Education & Children,ach
+synthetic-row-0742,POS 1mg Pharmacy MUMBAI,Healthcare,pos
+synthetic-row-0744,UPI-Udemy-<HANDLE>-ICICI-<REFERENCE>-UPI,Education & Children,upi_dash
+synthetic-row-0745,lunch bill paid at Third Wave Coffee,Eating Out,natural_language
+synthetic-row-0746,monthly subscription renewal for Apple Music,Entertainment & Subscriptions,natural_language
+synthetic-row-0750,petrol bill at Bharat Petroleum,Transportation & Gas,natural_language
+synthetic-row-0751,UPI-GST on Bank Charges-<HANDLE>-SBI-<REFERENCE>-UPI,Bank Fees & Charges,upi_dash
+synthetic-row-0752,monthly Vodafone Idea bill payment,Utilities,natural_language
+synthetic-row-0753,bought clothes online from Zara,Shopping & Clothing,natural_language
+synthetic-row-0754,Sony LIV Ref#<REFERENCE>,Entertainment & Subscriptions,merchant_reference
+synthetic-row-0755,UPI-EuroKids-<HANDLE>-ICICI-<REFERENCE>-UPI,Education & Children,upi_dash
+synthetic-row-0756,grocery order from Swiggy Instamart,Groceries,natural_language
+synthetic-row-0758,Bangalore Water Board PUNE IN,Utilities,merchant_city
+synthetic-row-0759,Vistara,Travel,bare_merchant
+synthetic-row-0762,IMPS-<REFERENCE>-<NAME> <NAME>-AXIS-YesMadam,Personal Care,imps
+synthetic-row-0763,Star Health Insurance policy renewal payment,Insurance,natural_language
+synthetic-row-0764,BSES Rajdhani Ref#<REFERENCE>,Utilities,merchant_reference
+synthetic-row-0766,coffee at Cafe Coffee Day,Eating Out,natural_language
+synthetic-row-0769,UPI/Apollo Pharmacy/<HANDLE>/Payment/KOTAK,Healthcare,upi_slash
+synthetic-row-0770,Cadabams Hospital,Healthcare,bare_merchant
+synthetic-row-0772,UPI-Star Health Insurance-<HANDLE>-KOTAK-<REFERENCE>-UPI,Insurance,upi_dash
+synthetic-row-0773,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-Park+ Parking,Transportation & Gas,neft
+synthetic-row-0775,UPI-Reliance Fresh-<HANDLE>-KOTAK-<REFERENCE>-UPI,Groceries,upi_dash
+synthetic-row-0785,IMPS-<REFERENCE>-<NAME> <NAME>-YES BANK-Annual Card Fee,Bank Fees & Charges,imps
+synthetic-row-0787,UPI/Property Owner NEFT/<HANDLE>/Payment/SBI,Housing/Rent,upi_slash
+synthetic-row-0788,NEFT Dr-ICICI<REFERENCE>-<NAME> <NAME>-Nykaa Fashion,Shopping & Clothing,neft
+synthetic-row-0789,Cadabams Hospital Ref#<REFERENCE>,Healthcare,merchant_reference
+synthetic-row-0790,NEFT Dr-ICICI<REFERENCE>-<NAME> <NAME>-YouTube Premium,Entertainment & Subscriptions,neft
+synthetic-row-0792,NEFT Dr-HDFC<REFERENCE>-<NAME> <NAME>-Uber,Transportation & Gas,neft
+synthetic-row-0794,dinner at Domino's Pizza with friends,Eating Out,natural_language
+synthetic-row-0796,bought clothes online from Lifestyle Stores,Shopping & Clothing,natural_language
+synthetic-row-0797,UPI/Apollo Hospitals/<HANDLE>/Payment/ICICI,Healthcare,upi_slash
+synthetic-row-0799,utility bill for Tata Power,Utilities,natural_language
+synthetic-row-0800,POS Kumon Learning CHENNAI,Education & Children,pos
+synthetic-row-0802,POS Max Healthcare CHENNAI,Healthcare,pos
+synthetic-row-0804,Kumon Learning Ref#<REFERENCE>,Education & Children,merchant_reference
+synthetic-row-0805,UPI-College Tuition NEFT-<HANDLE>-IDFC-<REFERENCE>-UPI,Education & Children,upi_dash
+synthetic-row-0806,POS Bajaj Allianz MUMBAI,Insurance,pos
+synthetic-row-0807,POS FASTag Recharge PUNE,Transportation & Gas,pos
+synthetic-row-0809,POS Sportskids Academy MUMBAI,Education & Children,pos
+synthetic-row-0811,Housing.com Rent CHENNAI IN,Housing/Rent,merchant_city
+synthetic-row-0812,IMPS-<REFERENCE>-<NAME> <NAME>-HDFC-Overdraft Interest Charge,Bank Fees & Charges,imps
+synthetic-row-0814,GST on Bank Charges deducted from account,Bank Fees & Charges,natural_language
+synthetic-row-0817,Urban Company,Personal Care,bare_merchant
+synthetic-row-0819,Practo Pharmacy Ref#<REFERENCE>,Healthcare,merchant_reference
+synthetic-row-0820,Airbnb GURGAON IN,Travel,merchant_city
+synthetic-row-0825,UPI-Faasos-<HANDLE>-KOTAK-<REFERENCE>-UPI,Eating Out,upi_dash
+synthetic-row-0827,POS Barbeque Nation GURGAON,Eating Out,pos
+synthetic-row-0829,ACH/TP ACH Tata Power <REFERENCE>,Utilities,ach
+synthetic-row-0834,Fortis Healthcare CHENNAI IN,Healthcare,merchant_city
+synthetic-row-0835,ACH/TP ACH Airbnb <REFERENCE>,Travel,ach
+synthetic-row-0836,UPI-Tata Power-<HANDLE>-SBI-<REFERENCE>-UPI,Utilities,upi_dash
+synthetic-row-0838,IMPS-<REFERENCE>-<NAME> <NAME>-HDFC-BSES Rajdhani,Utilities,imps
+synthetic-row-0839,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-Udemy,Education & Children,neft
+synthetic-row-0842,NEFT Dr-AXIS<REFERENCE>-<NAME> <NAME>-Reliance Fresh,Groceries,neft
+synthetic-row-0848,IMPS-<REFERENCE>-<NAME> <NAME>-ICICI-Netmeds,Healthcare,imps
+synthetic-row-0850,utility bill for Vodafone Idea,Utilities,natural_language
+synthetic-row-0855,UPI/Chai Point/<HANDLE>/Payment/SBI,Eating Out,upi_slash
+synthetic-row-0856,UPI-DMart-<HANDLE>-SBI-<REFERENCE>-UPI,Groceries,upi_dash
+synthetic-row-0858,IMPS-<REFERENCE>-<NAME> <NAME>-KOTAK-Swiggy Instamart,Groceries,imps
+synthetic-row-0859,Unacademy MUMBAI IN,Education & Children,merchant_city
+synthetic-row-0860,POS Housing.com Rent DELHI,Housing/Rent,pos
+synthetic-row-0861,POS Lakme Salon PUNE,Personal Care,pos
+synthetic-row-0862,ACH/TP ACH Annual Card Fee <REFERENCE>,Bank Fees & Charges,ach
+synthetic-row-0865,UPI/H&M/<HANDLE>/Payment/KOTAK,Shopping & Clothing,upi_slash
+synthetic-row-0869,Zara PUNE IN,Shopping & Clothing,merchant_city
+synthetic-row-0872,enrolled kid in Chimpanzee Play Center program,Education & Children,natural_language
+synthetic-row-0873,course payment on BYJU'S,Education & Children,natural_language
+synthetic-row-0874,UPI/Lakme Salon/<HANDLE>/Payment/SBI,Personal Care,upi_slash
+synthetic-row-0875,UPI/Vodafone Idea/<HANDLE>/Payment/AXIS,Utilities,upi_slash
+synthetic-row-0881,UPI/Netmeds/<HANDLE>/Payment/SBI,Healthcare,upi_slash
+synthetic-row-0882,Columbia Asia GURGAON IN,Healthcare,merchant_city
+synthetic-row-0883,POS Subway GURGAON,Eating Out,pos
+synthetic-row-0885,ACH/TP ACH Tata Power <REFERENCE>,Utilities,ach
+synthetic-row-0886,POS Star Health Insurance DELHI,Insurance,pos
+synthetic-row-0887,ACH/TP ACH Housing.com Rent <REFERENCE>,Housing/Rent,ach
+synthetic-row-0891,Myntra,Shopping & Clothing,bare_merchant
+synthetic-row-0892,UPI-Amazon Shopping-<HANDLE>-SBI-<REFERENCE>-UPI,Shopping & Clothing,upi_dash
+synthetic-row-0893,UPI/Bangalore Water Board/<HANDLE>/Payment/HDFC,Utilities,upi_slash
+synthetic-row-0895,Bajaj Allianz GURGAON IN,Insurance,merchant_city
+synthetic-row-0896,Sportskids Academy DELHI IN,Education & Children,merchant_city
+synthetic-row-0898,coffee at Domino's Pizza,Eating Out,natural_language
+synthetic-row-0900,UPI-Bajaj Allianz-<HANDLE>-AXIS-<REFERENCE>-UPI,Insurance,upi_dash
+synthetic-row-0901,ACH/TP ACH Apple Music <REFERENCE>,Entertainment & Subscriptions,ach
+synthetic-row-0911,Little Millennium Ref#<REFERENCE>,Education & Children,merchant_reference
+synthetic-row-0912,NEFT Dr-YES BANK<REFERENCE>-<NAME> <NAME>-NoBroker Rent Payment,Housing/Rent,neft
+synthetic-row-0913,ACH/TP ACH LIC Premium <REFERENCE>,Insurance,ach
+synthetic-row-0915,ACH/TP ACH IndiGo Airlines <REFERENCE>,Travel,ach
+synthetic-row-0920,UPI/Bachpan Play School/<HANDLE>/Payment/HDFC,Education & Children,upi_slash
+synthetic-row-0921,UPI-Barbeque Nation-<HANDLE>-IDFC-<REFERENCE>-UPI,Eating Out,upi_dash
+synthetic-row-0924,paid for Spotify Premium membership,Entertainment & Subscriptions,natural_language
+synthetic-row-0927,UPI-HDFC Life Insurance-<HANDLE>-YES BANK-<REFERENCE>-UPI,Insurance,upi_dash
+synthetic-row-0928,Vistara CHENNAI IN,Travel,merchant_city
+synthetic-row-0929,NEFT Dr-SBI<REFERENCE>-<NAME> <NAME>-SMS Alert Charges,Bank Fees & Charges,neft
+synthetic-row-0931,movie tickets booked on INOX Movies,Entertainment & Subscriptions,natural_language
+synthetic-row-0934,Zomato Ref#<REFERENCE>,Eating Out,merchant_reference
+synthetic-row-0936,Lakme Salon,Personal Care,bare_merchant
+synthetic-row-0937,ACH/TP ACH Little Millennium <REFERENCE>,Education & Children,ach
+synthetic-row-0938,POS School Fee Payment MUMBAI,Education & Children,pos
+synthetic-row-0940,Air India,Travel,bare_merchant
+synthetic-row-0941,Ola Cabs GURGAON IN,Transportation & Gas,merchant_city
+synthetic-row-0942,gym membership fee for Cult.fit,Personal Care,natural_language
+synthetic-row-0943,Unacademy HYDERABAD IN,Education & Children,merchant_city
+synthetic-row-0944,petrol bill at Indian Oil Petrol Pump,Transportation & Gas,natural_language
+synthetic-row-0945,Star Bazaar CHENNAI IN,Groceries,merchant_city
+synthetic-row-0946,insurance premium paid to HDFC Life Insurance,Insurance,natural_language
+synthetic-row-0948,NEFT Dr-KOTAK<REFERENCE>-<NAME> <NAME>-Practo Consultation,Healthcare,neft
+synthetic-row-0951,POS Apollo Pharmacy DELHI,Healthcare,pos
+synthetic-row-0952,UPI-Kidzee-<HANDLE>-ICICI-<REFERENCE>-UPI,Education & Children,upi_dash
+synthetic-row-0954,NEFT Dr-AXIS<REFERENCE>-<NAME> <NAME>-Max Bupa Health,Insurance,neft
+synthetic-row-0957,IMPS-<REFERENCE>-<NAME> <NAME>-AXIS-Myntra,Shopping & Clothing,imps
+synthetic-row-0963,NEFT Dr-SBI<REFERENCE>-<NAME> <NAME>-Zara,Shopping & Clothing,neft
+synthetic-row-0965,ACH/TP ACH Adani Electricity <REFERENCE>,Utilities,ach
+synthetic-row-0967,POS BSES Rajdhani CHENNAI,Utilities,pos
+synthetic-row-0968,course payment on College Tuition NEFT,Education & Children,natural_language
+synthetic-row-0969,IMPS-<REFERENCE>-<NAME> <NAME>-IDFC-BYJU'S,Education & Children,imps
+synthetic-row-0970,UPI-Behrouz Biryani-<HANDLE>-YES BANK-<REFERENCE>-UPI,Eating Out,upi_dash

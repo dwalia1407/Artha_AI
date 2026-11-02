@@ -1,0 +1,71 @@
+{
+  "test_only": true,
+  "status": "Illustrative contract example; not an executed service test",
+  "assumptions": [
+    "Fictional household; trusted membership check succeeds for this scenario",
+    "Coverage of November is explicitly confirmed complete; not inferred from record count",
+    "All amounts are integer paise and all records are approved",
+    "Fixture record fields are illustrative, not an approved database schema"
+  ],
+  "request": {
+    "household_id": "demo-household",
+    "month": "2026-11"
+  },
+  "records": [
+    {
+      "transaction_id": "salary-1",
+      "date": "2026-11-01",
+      "type": "income",
+      "amount_minor": 5000000,
+      "currency": "INR",
+      "approved": true
+    },
+    {
+      "transaction_id": "groceries-1",
+      "date": "2026-11-01",
+      "type": "purchase",
+      "category": "Groceries",
+      "amount_minor": 300000,
+      "currency": "INR",
+      "approved": true
+    },
+    {
+      "transaction_id": "rent-1",
+      "date": "2026-11-01",
+      "type": "purchase",
+      "category": "Housing/Rent",
+      "amount_minor": 1000000,
+      "currency": "INR",
+      "approved": true
+    },
+    {
+      "transaction_id": "refund-1",
+      "date": "2026-11-02",
+      "type": "refund",
+      "matched_purchase_id": "groceries-1",
+      "amount_minor": 50000,
+      "currency": "INR",
+      "approved": true
+    },
+    {
+      "transaction_id": "transfer-1",
+      "date": "2026-11-02",
+      "type": "internal_transfer",
+      "amount_minor": 500000,
+      "currency": "INR",
+      "approved": true
+    }
+  ],
+  "expected_response": {
+    "household_id": "demo-household",
+    "month": "2026-11",
+    "currency": "INR",
+    "income_minor": 5000000,
+    "expense_minor": 1250000,
+    "cash_surplus_minor": 3750000,
+    "transaction_count": 5,
+    "coverage_status": "complete",
+    "warnings": [],
+    "calculation_version": "v1"
+  }
+}

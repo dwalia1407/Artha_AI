@@ -1,0 +1,82 @@
+{
+  "version": 2,
+  "approved_for_shared_experiments": true,
+  "seed": 42,
+  "source_sha256": "771517972d3f9aa03063b179f0333b52ecb50be0d508f5bb1906e7275c789850",
+  "target_ratios": [
+    0.7,
+    0.15,
+    0.15
+  ],
+  "minimum_per_category_per_split": 3,
+  "counts": {
+    "train": 375,
+    "validation": 80,
+    "test": 84
+  },
+  "family_assignments": {
+    "imps": "validation",
+    "bare_merchant": "validation",
+    "merchant_reference": "test",
+    "ach": "test",
+    "pos": "train",
+    "merchant_city": "train",
+    "upi_dash": "train",
+    "natural_language": "train",
+    "neft": "train",
+    "upi_slash": "train"
+  },
+  "category_counts": {
+    "validation": {
+      "Groceries": 7,
+      "Housing/Rent": 9,
+      "Travel": 6,
+      "Entertainment & Subscriptions": 5,
+      "Utilities": 4,
+      "Healthcare": 10,
+      "Insurance": 3,
+      "Eating Out": 7,
+      "Bank Fees & Charges": 4,
+      "Education & Children": 11,
+      "Personal Care": 6,
+      "Shopping & Clothing": 4,
+      "Transportation & Gas": 4
+    },
+    "train": {
+      "Housing/Rent": 20,
+      "Groceries": 33,
+      "Shopping & Clothing": 28,
+      "Transportation & Gas": 27,
+      "Insurance": 31,
+      "Education & Children": 47,
+      "Healthcare": 53,
+      "Bank Fees & Charges": 25,
+      "Utilities": 27,
+      "Travel": 13,
+      "Entertainment & Subscriptions": 20,
+      "Eating Out": 32,
+      "Personal Care": 19
+    },
+    "test": {
+      "Bank Fees & Charges": 7,
+      "Healthcare": 13,
+      "Utilities": 9,
+      "Education & Children": 14,
+      "Personal Care": 3,
+      "Groceries": 3,
+      "Insurance": 6,
+      "Entertainment & Subscriptions": 5,
+      "Travel": 10,
+      "Transportation & Gas": 3,
+      "Shopping & Clothing": 3,
+      "Eating Out": 3,
+      "Housing/Rent": 5
+    }
+  },
+  "sha256": {
+    "dataset.csv": "6ded5297a5ee93c6222f0a5f5dc42695e00344fd92ab5ae6478db54e766359ce",
+    "label_map.json": "66ce2b82f34cb350a606a45e20d89d8845d28db53d73704d9e4b481972414483",
+    "split_manifest.csv": "6357f23cdf8ec343862b3dbc2510e628313b195cf7cfd1ae9e6ca91ef46f92ca"
+  },
+  "status": "Approved synthetic template-family split; no fitted preprocessing or trained models"
+}
