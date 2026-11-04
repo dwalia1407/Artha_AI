@@ -1,0 +1,33 @@
+{% extends "base.html" %}{% block title %}Imports{% endblock %}
+{% block content %}
+<h1>Import statements: {{ household.name }}</h1>
+{% if role == 'owner' %}
+  {% if accounts %}
+  <p class="muted">Upload a CSV statement. Rows go to a review step first; nothing reaches the ledger until you approve it.</p>
+  {% for a in accounts %}
+  <form method="post" action="{{ url_for('web.upload_import', account_id=a.id) }}" class="card" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <h2>{{ a.account_name }}</h2>
+    <label for="file-{{ a.id }}">CSV file</label><input id="file-{{ a.id }}" name="file" type="file" accept=".csv,text/csv" required>
+    <label for="layout-{{ a.id }}">Column layout</label>
+    <select id="layout-{{ a.id }}" name="layout">
+      <option value="signed_amount">One amount column (date, description, amount)</option>
+      <option value="debit_credit">Separate debit and credit columns</option>
+    </select>
+    <p><button type="submit">Upload and review</button></p>
+  </form>
+  {% endfor %}
+  {% else %}<div class="card empty">Add an active account on the household page before importing.</div>{% endif %}
+{% else %}<div class="card empty">Only household owners can upload statements.</div>{% endif %}
+<h2>Import history</h2>
+{% if imports %}
+<div class="table-wrap"><table><caption class="sr-only">Imports</caption>
+<thead><tr><th>File</th><th>Uploaded</th><th>Status</th><th class="num">Rows</th><th class="num">Invalid at upload</th><th></th></tr></thead>
+<tbody>{% for i in imports %}<tr>
+  <td>{{ i.filename }}{% if i.error_message %}<div class="errors">{{ i.error_message }}</div>{% endif %}</td>
+  <td>{{ i.uploaded_at.strftime('%Y-%m-%d %H:%M') }} UTC</td><td>{{ i.import_status }}</td>
+  <td class="num">{{ i.total_rows }}</td><td class="num">{{ i.invalid_rows }}</td>
+  <td>{% if i.import_status != 'failed' %}<a href="{{ url_for('web.import_review', import_id=i.id) }}">Review</a>{% endif %}</td>
+</tr>{% endfor %}</tbody></table></div>
+{% else %}<div class="card empty">No imports yet.</div>{% endif %}
+{% endblock %}

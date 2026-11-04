@@ -1,0 +1,47 @@
+{% extends "base.html" %}{% block title %}Row {{ row.source_row_number }}{% endblock %}
+{% block content %}
+{% set st = display_status(row) %}
+<h1>Row {{ row.source_row_number }} <span class="badge {{ st }}">{{ st }}</span></h1>
+<p><a href="{{ url_for('web.import_review', import_id=row.import_id) }}">Back to review</a></p>
+{% if row.validation_errors %}<div class="flash error" role="alert"><strong>Needs fixing:</strong><ul class="errors">{% for e in row.validation_errors %}<li>{{ e.field }}: {{ e.message }}</li>{% endfor %}</ul></div>{% endif %}
+{% if row.potential_duplicate %}<div class="flash error" role="status">This looks like a transaction that is already recorded for this account. Approve it only if it is a separate, real transaction.</div>{% endif %}
+<div class="card"><h2>Original file values</h2>
+<div class="table-wrap"><table><tbody>{% for k, v in row.raw_row.items() %}<tr><th scope="row">{{ k }}</th><td>{{ v }}</td></tr>{% endfor %}</tbody></table></div></div>
+{% if role == 'owner' and st != 'approved' %}
+<form method="post" action="{{ url_for('web.staged_edit', staged_id=row.id) }}" class="card">
+  <h2>Edit</h2>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <label for="date">Date (YYYY-MM-DD or DD/MM/YYYY)</label><input id="date" name="date" type="text" value="{{ row.transaction_date.isoformat() if row.transaction_date else '' }}">
+  <label for="description">Description</label><input id="description" name="description" type="text" value="{{ row.description }}">
+  <label for="amount">Amount in rupees (positive)</label><input id="amount" name="amount" type="text" value="{{ ('%d.%02d' % (row.amount_minor // 100, row.amount_minor % 100)) if row.amount_minor else '' }}">
+  <label for="direction">Direction</label>
+  <select id="direction" name="direction"><option value="">(choose)</option><option value="credit" {{ 'selected' if row.direction == 'credit' }}>credit (money in)</option><option value="debit" {{ 'selected' if row.direction == 'debit' }}>debit (money out)</option></select>
+  <label for="type">Transaction type</label>
+  <select id="type" name="type"><option value="">(not set)</option>{% for t in transaction_types %}<option {{ 'selected' if row.transaction_type == t }}>{{ t }}</option>{% endfor %}</select>
+  <label for="category">Category</label>
+  <select id="category" name="category"><option value="">(none)</option>{% for c in categories %}<option {{ 'selected' if row.category == c }}>{{ c }}</option>{% endfor %}</select>
+  <label for="matched">Matched purchase id (for refunds, optional)</label><input id="matched" name="matched_transaction_id" type="text" value="{{ row.matched_transaction_id or '' }}">
+  <p><button type="submit">Save changes</button></p>
+</form>
+<div class="row-actions">
+  {% if st == 'pending' %}
+  <form method="post" action="{{ url_for('web.approve', import_id=row.import_id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="ids" value="{{ row.id }}">
+    {% if row.potential_duplicate %}<label><input type="checkbox" name="confirm_duplicates" value="yes" required> This is a separate, legitimate transaction</label>{% endif %}
+    <button type="submit">Approve into ledger</button>
+  </form>
+  {% endif %}
+  {% if st != 'rejected' %}
+  <form method="post" action="{{ url_for('web.staged_reject', staged_id=row.id) }}" data-confirm="Reject this row? It will not be counted anywhere.">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button type="submit" class="danger">Reject row</button></form>
+  {% else %}
+  <form method="post" action="{{ url_for('web.staged_reopen', staged_id=row.id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button type="submit" class="secondary">Reopen row</button></form>
+  {% endif %}
+</div>
+{% else %}
+<div class="card"><h2>Values</h2><p>{{ row.transaction_date }} &middot; {{ row.description }} &middot; {{ money(row.amount_minor) }} {{ row.direction }} &middot; {{ row.transaction_type }} &middot; {{ row.category or 'no category' }}</p>
+{% if row.transaction_id %}<p><a href="{{ url_for('web.transaction_detail', transaction_id=row.transaction_id) }}">View ledger record</a></p>{% endif %}</div>
+{% endif %}
+{% if row.edit_history %}<h2>Edit history</h2><div class="table-wrap"><table><thead><tr><th>When (UTC)</th><th>Field</th><th>Old</th><th>New</th></tr></thead><tbody>{% for h in row.edit_history %}<tr><td>{{ h.at[:19] }}</td><td>{{ h.field }}</td><td>{{ h.old }}</td><td>{{ h.new }}</td></tr>{% endfor %}</tbody></table></div>{% endif %}
+{% endblock %}

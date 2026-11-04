@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% block title %}Households{% endblock %}
+{% block content %}
+<h1>Your households</h1>
+{% if me.email_verified_at is none %}<div class="flash error" role="status">Your email is not verified yet.</div>{% endif %}
+{% if households %}
+<div class="grid">{% for h, role in households %}
+  <div class="card"><h2><a href="{{ url_for('web.household', household_id=h.id) }}">{{ h.name }}</a></h2><p class="muted">Your role: {{ role }}</p></div>
+{% endfor %}</div>
+{% else %}<div class="card empty">You do not belong to a household yet. Create one to start importing statements.</div>{% endif %}
+<h2>Create a household</h2>
+<form method="post" action="{{ url_for('web.create_household') }}" class="card">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <label for="name">Household name</label><input id="name" name="name" type="text" required maxlength="120">
+  <p><button type="submit">Create household</button></p>
+</form>
+{% endblock %}

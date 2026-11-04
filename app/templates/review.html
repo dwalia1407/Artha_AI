@@ -1,0 +1,56 @@
+{% extends "base.html" %}{% block title %}Review import{% endblock %}
+{% block content %}
+<h1>Review: {{ imp.filename }}</h1>
+<p class="muted">Parser {{ imp.parser_version }} &middot; import status: {{ imp.import_status }} &middot; <a href="{{ url_for('web.imports_page', household_id=imp.household_id) }}">All imports</a> &middot; <a href="{{ url_for('web.ledger_page', household_id=imp.household_id) }}">Ledger</a></p>
+<div class="grid">
+  <div class="card"><div class="stat">{{ stats.total }}</div>Rows in file</div>
+  <div class="card"><div class="stat">{{ stats.pending }}</div>Pending review</div>
+  <div class="card"><div class="stat">{{ stats.invalid }}</div>Invalid (fix or reject)</div>
+  <div class="card"><div class="stat">{{ stats.approved }}</div>Approved</div>
+  <div class="card"><div class="stat">{{ stats.rejected }}</div>Rejected</div>
+  <div class="card"><div class="stat">{{ stats.potential_duplicates_pending }}</div>Possible duplicates pending</div>
+</div>
+<p>Show:
+  <a href="{{ url_for('web.import_review', import_id=imp.id) }}">all</a> |
+  {% for s in ['pending', 'invalid', 'approved', 'rejected'] %}<a href="{{ url_for('web.import_review', import_id=imp.id, status=s) }}">{{ s }}</a>{{ ' | ' if not loop.last }}{% endfor %}
+</p>
+{% if rows %}
+<form method="post" id="bulk-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  {% if role == 'owner' %}
+  <div class="card">
+    <div class="row-actions">
+      <button type="submit" formaction="{{ url_for('web.approve', import_id=imp.id) }}">Approve selected</button>
+      <label><input type="checkbox" name="confirm_duplicates" value="yes"> Selected possible duplicates are legitimate separate transactions</label>
+    </div>
+    <div class="row-actions">
+      <label for="bulk-type">Set transaction type for selected rows</label>
+      <select id="bulk-type" name="type">{% for t in transaction_types %}<option>{{ t }}</option>{% endfor %}</select>
+      <button type="submit" class="secondary" formaction="{{ url_for('web.set_type', import_id=imp.id) }}">Apply type</button>
+    </div>
+  </div>
+  {% endif %}
+  <div class="table-wrap"><table><caption class="sr-only">Staged transactions</caption>
+  <thead><tr>
+    <th>{% if role == 'owner' %}<input type="checkbox" id="select-all" aria-label="Select all rows">{% endif %}</th>
+    <th>Row</th><th>Status</th><th>Date</th><th>Description</th><th class="num">Amount</th><th>Dir.</th><th>Type</th><th>Category</th><th></th></tr></thead>
+  <tbody>
+  {% for r in rows %}{% set st = display_status(r) %}
+  <tr>
+    <td>{% if role == 'owner' %}<input type="checkbox" class="row-check" name="ids" value="{{ r.id }}" aria-label="Select row {{ r.source_row_number }}" {{ 'disabled' if st in ('approved', 'rejected', 'invalid') }}>{% endif %}</td>
+    <td>{{ r.source_row_number }}</td>
+    <td><span class="badge {{ st }}">{{ st }}</span>{% if r.potential_duplicate and st == 'pending' %} <span class="badge dup">possible duplicate</span>{% endif %}
+      {% if r.validation_errors %}<ul class="errors">{% for e in r.validation_errors %}<li>{{ e.message }}</li>{% endfor %}</ul>{% endif %}</td>
+    <td>{{ r.transaction_date.isoformat() if r.transaction_date else '' }}</td>
+    <td>{{ r.description or r.original_description }}</td>
+    <td class="num">{{ money(r.amount_minor) if r.amount_minor else '' }}</td>
+    <td>{{ r.direction or '' }}</td>
+    <td>{{ r.transaction_type or '(not set)' }}</td>
+    <td>{{ r.category or '' }}</td>
+    <td><a href="{{ url_for('web.staged_detail', staged_id=r.id) }}">{{ 'Inspect / edit' if role == 'owner' else 'Inspect' }}</a></td>
+  </tr>
+  {% endfor %}
+  </tbody></table></div>
+</form>
+{% else %}<div class="card empty">No rows to show for this filter.</div>{% endif %}
+{% endblock %}

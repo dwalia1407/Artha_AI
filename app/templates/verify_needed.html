@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}Verify your email{% endblock %}
+{% block content %}
+<h1>Verify your email</h1>
+<p>Open the link we emailed to <strong>{{ me.email }}</strong> to continue. Links expire after 24 hours.</p>
+<form method="post" action="{{ url_for('web.verify_resend') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button type="submit">Send a new link</button></form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% block title %}Monthly summary{% endblock %}
+{% block content %}
+<h1>Monthly summary: {{ household.name }}</h1>
+<form method="get" class="card"><label for="month">Month</label><input id="month" name="month" type="month" value="{{ month }}" required><p><button type="submit">Show</button></p></form>
+{% if not connected %}
+<div class="card empty">The finance service is not connected yet, so no totals are shown. Totals are never estimated here.</div>
+{% elif problem %}<div class="flash error" role="alert">{{ problem }}</div>
+{% elif result %}
+<div class="card"><div class="table-wrap"><table><tbody>
+<tr><th scope="row">Income</th><td>{{ money(result.income_minor) if result.income_minor is not none else 'unknown' }}</td></tr>
+<tr><th scope="row">Expenses</th><td>{{ money(result.expense_minor) if result.expense_minor is not none else 'unknown' }}</td></tr>
+<tr><th scope="row">Cash surplus</th><td>{{ money(result.cash_surplus_minor) if result.cash_surplus_minor is not none else 'unknown' }}</td></tr>
+<tr><th scope="row">Approved records</th><td>{{ result.transaction_count }}</td></tr>
+<tr><th scope="row">Coverage</th><td>{{ result.coverage_status }}</td></tr>
+<tr><th scope="row">Calculation version</th><td>{{ result.calculation_version }}</td></tr>
+</tbody></table></div>
+{% if result.warnings %}<ul class="errors">{% for w in result.warnings %}<li>{{ w }}</li>{% endfor %}</ul>{% endif %}</div>
+{% endif %}
+{% endblock %}

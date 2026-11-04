@@ -1,0 +1,27 @@
+{% extends "base.html" %}{% block title %}Transaction{% endblock %}
+{% block content %}
+<h1>Ledger record</h1>
+<p><a href="{{ url_for('web.ledger_page', household_id=txn.household_id) }}">Back to ledger</a></p>
+<div class="card"><div class="table-wrap"><table><tbody>
+<tr><th scope="row">Date</th><td>{{ txn.transaction_date.isoformat() }}</td></tr>
+<tr><th scope="row">Amount</th><td>{{ money(txn.amount_minor) }} {{ txn.direction }} ({{ txn.amount_minor }} paise, {{ txn.currency }})</td></tr>
+<tr><th scope="row">Account</th><td>{{ account.account_name }}</td></tr>
+<tr><th scope="row">Original description</th><td>{{ txn.original_description }}</td></tr>
+<tr><th scope="row">Description</th><td>{{ txn.description }}</td></tr>
+<tr><th scope="row">Type / category</th><td>{{ txn.transaction_type }} / {{ txn.category or 'none' }}</td></tr>
+<tr><th scope="row">Matched transaction</th><td>{{ txn.matched_transaction_id or 'none' }}</td></tr>
+<tr><th scope="row">Source</th><td>Import <a href="{{ url_for('web.import_review', import_id=txn.import_id) }}">{{ txn.import_id[:8] }}</a>, file row {{ txn.source_row_number }}</td></tr>
+</tbody></table></div></div>
+{% if role == 'owner' %}
+<form method="post" action="{{ url_for('web.transaction_correct', transaction_id=txn.id) }}" class="card">
+  <h2>Correct classification</h2>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <label for="transaction_type">Transaction type</label><select id="transaction_type" name="transaction_type">{% for t in transaction_types %}<option {{ 'selected' if txn.transaction_type == t }}>{{ t }}</option>{% endfor %}</select>
+  <label for="category">Category</label><select id="category" name="category"><option value="">(none)</option>{% for c in categories %}<option {{ 'selected' if txn.category == c }}>{{ c }}</option>{% endfor %}</select>
+  <label for="matched_transaction_id">Matched purchase id (refunds)</label><input id="matched_transaction_id" name="matched_transaction_id" type="text" value="{{ txn.matched_transaction_id or '' }}">
+  <p class="muted">Amount, date and direction cannot be changed here. Re-import a corrected statement instead.</p>
+  <p><button type="submit">Save correction</button></p>
+</form>
+{% endif %}
+{% if txn.correction_metadata %}<h2>Correction history</h2><div class="table-wrap"><table><thead><tr><th>When (UTC)</th><th>Step</th><th>Field</th><th>Old</th><th>New</th></tr></thead><tbody>{% for h in txn.correction_metadata %}<tr><td>{{ h.at[:19] }}</td><td>{{ h.stage }}</td><td>{{ h.field }}</td><td>{{ h.old }}</td><td>{{ h.new }}</td></tr>{% endfor %}</tbody></table></div>{% endif %}
+{% endblock %}

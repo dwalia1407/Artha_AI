@@ -1,0 +1,50 @@
+{% extends "base.html" %}{% block title %}{{ household.name }}{% endblock %}
+{% block content %}
+<h1>{{ household.name }}</h1>
+<p class="muted">Your role: {{ role }}</p>
+<p class="row-actions">
+  <a class="btn secondary" href="{{ url_for('web.imports_page', household_id=household.id) }}">Import statements</a>
+  <a class="btn secondary" href="{{ url_for('web.ledger_page', household_id=household.id) }}">Ledger</a>
+  <a class="btn secondary" href="{{ url_for('web.summary_page', household_id=household.id) }}">Monthly summary</a>
+</p>
+{% if role == 'owner' %}
+<form method="post" action="{{ url_for('web.rename_household', household_id=household.id) }}" class="card">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <label for="rename">Rename household</label><input id="rename" name="name" type="text" value="{{ household.name }}" required maxlength="120">
+  <p><button type="submit" class="secondary">Rename</button></p>
+</form>
+{% endif %}
+<h2>Members</h2>
+<div class="table-wrap"><table><caption class="sr-only">Household members</caption>
+<thead><tr><th>Name</th><th>Role</th></tr></thead>
+<tbody>{% for m in members %}<tr><td>{{ m.display_name }}</td><td>{{ m.role }}</td></tr>{% endfor %}</tbody></table></div>
+<h2>Accounts</h2>
+{% if accounts %}
+<div class="table-wrap"><table><caption class="sr-only">Accounts</caption>
+<thead><tr><th>Name</th><th>Type</th><th>Institution</th><th>Status</th>{% if role == 'owner' %}<th>Edit</th>{% endif %}</tr></thead>
+<tbody>{% for a in accounts %}<tr>
+  <td>{{ a.account_name }}</td><td>{{ a.account_type }}</td><td>{{ a.institution_name }}</td><td>{{ a.account_status }}</td>
+  {% if role == 'owner' %}<td>
+    <form method="post" action="{{ url_for('web.edit_account', account_id=a.id) }}" class="row-actions">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label class="sr-only" for="name-{{ a.id }}">Name</label><input id="name-{{ a.id }}" type="text" name="account_name" value="{{ a.account_name }}" required>
+      <label class="sr-only" for="status-{{ a.id }}">Status</label>
+      <select id="status-{{ a.id }}" name="account_status"><option value="active" {{ 'selected' if a.account_status == 'active' }}>active</option><option value="closed" {{ 'selected' if a.account_status == 'closed' }}>closed</option></select>
+      <button type="submit" class="secondary">Save</button>
+    </form></td>{% endif %}
+</tr>{% endfor %}</tbody></table></div>
+{% else %}<div class="card empty">No accounts yet.{% if role == 'owner' %} Add one below before importing.{% endif %}</div>{% endif %}
+{% if role == 'owner' %}
+<form method="post" action="{{ url_for('web.create_account', household_id=household.id) }}" class="card">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <h2>Add an account (INR)</h2>
+  <label for="account_name">Account name</label><input id="account_name" name="account_name" type="text" required maxlength="120">
+  <label for="account_type">Type</label><select id="account_type" name="account_type">{% for t in account_types %}<option>{{ t }}</option>{% endfor %}</select>
+  <label for="institution_name">Bank or institution</label><input id="institution_name" name="institution_name" type="text" maxlength="120">
+  <p><button type="submit">Add account</button></p>
+</form>
+{% endif %}
+<h2>Recent imports</h2>
+{% if imports %}<ul>{% for i in imports %}<li><a href="{{ url_for('web.import_review', import_id=i.id) }}">{{ i.filename }}</a> <span class="muted">{{ i.import_status }}</span></li>{% endfor %}</ul>
+{% else %}<p class="muted">No imports yet.</p>{% endif %}
+{% endblock %}
