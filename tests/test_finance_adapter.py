@@ -2,6 +2,7 @@
 import pytest
 
 from app.auth.context import AuthContext
+from app.errors import InvalidRequest
 from app.integrations import finance
 
 
@@ -69,3 +70,28 @@ def test_adapter_propagates_service_exception_unchanged(app, alice):
             )
 
     assert exc_info.value is expected_error
+
+
+def test_adapter_rejects_malformed_month(app, alice):
+    household_id = alice.household()
+    auth_context = AuthContext(
+        user_id=alice.user["id"],
+        email_verified=True
+    )
+
+    called = False
+
+    def mock_service(context, hid, month):
+        nonlocal called
+        called = True
+        return {}
+
+    finance.register_service(mock_service)
+
+    with app.app_context():
+        with pytest.raises(InvalidRequest):
+            finance.get_monthly_summary(
+                auth_context, household_id, "2026-13"
+            )
+
+    assert called is False
