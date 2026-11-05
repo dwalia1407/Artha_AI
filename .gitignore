@@ -1,4 +1,20 @@
-.env
-*.sqlite3
+# Python environments
+.venv/
+venv/
 __pycache__/
+*.py[cod]
+
+# Testing
 .pytest_cache/
+.coverage
+htmlcov/
+
+# Local configuration and data
+.env
+.env.*
+!.env.example
+instance/
+
+# IDE
+.vscode/
+.idea/

@@ -1,9 +1,9 @@
 """Session helpers. The session cookie is signed; only the user id is stored in it."""
 
-import secrets
 from datetime import timedelta
+import secrets
 
-from flask import current_app, g, session
+from flask import current_app, g, has_request_context, request, session
 
 from app.auth.context import AuthContext
 from app.errors import EmailNotVerified, Unauthenticated
@@ -24,8 +24,24 @@ def logout_user():
 
 def current_user():
     if "user" not in g:
-        uid = session.get("uid")
-        g.user = db.session.get(User, uid) if uid else None
+        user = None
+        # Check Bearer token if present
+        if has_request_context():
+            auth_header = request.headers.get("Authorization", "")
+            if auth_header.startswith("Bearer "):
+                token = auth_header[7:].strip()
+                if token:
+                    try:
+                        from app.auth.service import authenticate_supabase_token
+                        user = authenticate_supabase_token(token)
+                    except Exception:
+                        user = None
+
+        if user is None:
+            uid = session.get("uid")
+            user = db.session.get(User, uid) if uid else None
+
+        g.user = user
     return g.user
 
 
@@ -40,9 +56,10 @@ def require_user(allow_unverified=False):
 
 
 def require_context():
-    """Build the trusted AuthContext from the verified session."""
+    """Build the trusted AuthContext from the verified session or token."""
     user = require_user()
-    return AuthContext(user_id=user.id, email_verified=user.email_verified_at is not None)
+    source = "token" if has_request_context() and request.headers.get("Authorization", "").startswith("Bearer ") else "session"
+    return AuthContext(user_id=user.id, email_verified=user.email_verified_at is not None, source=source)
 
 
 def csrf_token():

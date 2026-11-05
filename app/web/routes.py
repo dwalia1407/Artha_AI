@@ -207,6 +207,23 @@ def import_review(import_id):
                            display_status=import_service.display_status)
 
 
+@web.get("/imports/<import_id>/download")
+def download_import(import_id):
+    from flask import Response
+    from app.imports.storage import retrieve_csv_file
+    user = require_user()
+    raw_bytes, filename = retrieve_csv_file(user.id, import_id)
+    return Response(
+        raw_bytes,
+        mimetype="text/csv",
+        headers={
+            "Content-Disposition": f'attachment; filename="{filename}"',
+            "X-Content-Type-Options": "nosniff",
+            "Cache-Control": "no-store",
+        }
+    )
+
+
 @web.get("/staged/<staged_id>")
 def staged_detail(staged_id):
     user = require_user()

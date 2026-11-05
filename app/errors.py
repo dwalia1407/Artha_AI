@@ -10,10 +10,14 @@ class AppError(Exception):
     status = 400
     code = "invalid_request"
 
-    def __init__(self, message="", details=None):
+    def __init__(self, message="", details=None, status=None, code=None):
         super().__init__(message or self.code)
         self.message = message or self.code
         self.details = details or {}
+        if status is not None:
+            self.status = status
+        if code is not None:
+            self.code = code
 
 
 class InvalidRequest(AppError):
@@ -55,3 +59,15 @@ class ServiceUnavailable(AppError):
 
 class EmailNotVerified(Unauthorized):
     code = "email_not_verified"
+
+
+class RateLimited(AppError):
+    status = 429
+    code = "rate_limited"
+
+    def __init__(self, message="Too many attempts. Please try again later.", retry_after=None, details=None):
+        det = dict(details or {})
+        if retry_after is not None:
+            det["retry_after"] = int(retry_after)
+        super().__init__(message=message, details=det)
+        self.retry_after = retry_after

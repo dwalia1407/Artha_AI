@@ -21,6 +21,7 @@ from app.extensions import db
 from app.households.accounts import get_account
 from app.households.service import require_member
 from app.imports.csv_parser import ImportFileError, normalize_description, parse_csv
+from app.imports.storage import store_csv_file
 from app.models import Import, StagedTransaction, Transaction
 
 
@@ -129,6 +130,10 @@ def create_import(actor_id, account_id, filename, data, preset="signed_amount", 
                  invalid_rows=sum(1 for r in rows if r["errors"]))
     db.session.add(imp)
     db.session.flush()
+    try:
+        store_csv_file(account.household_id, account.id, imp.id, data)
+    except Exception as exc:
+        current_app.logger.warning("Failed to store encrypted CSV for import %s: %s", imp.id, exc)
 
     flagged = find_duplicate_candidates(account.id, rows, imp.id)
     for r in rows:

@@ -2,19 +2,19 @@
 
 import hmac
 import logging
+import os
 
 from flask import Flask, jsonify, render_template, request, redirect, url_for, flash
 from sqlalchemy import text
 from werkzeug.exceptions import HTTPException, RequestEntityTooLarge
 
-from app.config import Config, normalize_database_url
+from app.config import Config, normalize_database_url, validate_config
 from app.errors import AppError, EmailNotVerified, Unauthenticated
 from app.extensions import db
 from app.session import csrf_token, current_user, session_lifetime
 
 
 def create_app(overrides=None):
-    Config.validate()
     app = Flask(__name__)
     app.config.from_object(Config)
     app.config["CSRF_ENABLED"] = True
@@ -23,6 +23,14 @@ def create_app(overrides=None):
         app.config.update(overrides)
     app.config["SQLALCHEMY_DATABASE_URI"] = normalize_database_url(app.config["SQLALCHEMY_DATABASE_URI"])
     app.config["MAX_CONTENT_LENGTH"] = app.config["MAX_UPLOAD_BYTES"] + 64 * 1024
+    if not app.config.get("STORAGE_PATH"):
+        app.config["STORAGE_PATH"] = os.path.join(app.instance_path, "secure_storage")
+    try:
+        os.makedirs(app.config["STORAGE_PATH"], exist_ok=True)
+    except OSError:
+        pass
+
+    validate_config(app.config)
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
     db.init_app(app)
@@ -39,8 +47,20 @@ def create_app(overrides=None):
 
 def register_hooks(app):
     @app.before_request
+    def enforce_https():
+        if app.config.get("APP_ENV") == "production":
+            proto = request.headers.get("X-Forwarded-Proto", request.scheme)
+            if proto == "http":
+                url = request.url.replace("http://", "https://", 1)
+                return redirect(url, code=301)
+        return None
+
+    @app.before_request
     def check_csrf():
         if not app.config["CSRF_ENABLED"] or request.method in ("GET", "HEAD", "OPTIONS"):
+            return None
+        auth_header = request.headers.get("Authorization", "")
+        if auth_header.startswith("Bearer "):
             return None
         from flask import session
         sent = request.headers.get("X-CSRF-Token") or request.form.get("csrf_token") or ""
@@ -57,6 +77,8 @@ def register_hooks(app):
         response.headers["Content-Security-Policy"] = (
             "default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; "
             "form-action 'self'; frame-ancestors 'none'")
+        if app.config.get("APP_ENV") == "production":
+            response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
         if request.path != "/healthz" and not request.path.startswith("/static"):
             response.headers["Cache-Control"] = "no-store"
         return response
@@ -102,10 +124,19 @@ def wants_json():
 
 
 def error_response(exc, status, code):
+    retry_after = getattr(exc, "retry_after", None)
     if wants_json():
-        return jsonify({"error": {"code": code, "message": exc.message if isinstance(exc, AppError) else str(exc),
-                                  "details": getattr(exc, "details", {})}}), status
-    return render_template("error.html", status=status, message=getattr(exc, "message", str(exc))), status
+        body = jsonify({"error": {"code": code, "message": exc.message if isinstance(exc, AppError) else str(exc),
+                                  "details": getattr(exc, "details", {})}})
+        if retry_after is not None:
+            body.headers["Retry-After"] = str(int(retry_after))
+        return body, status
+    from flask import make_response
+    content = render_template("error.html", status=status, message=getattr(exc, "message", str(exc)))
+    r = make_response(content, status)
+    if retry_after is not None:
+        r.headers["Retry-After"] = str(int(retry_after))
+    return r
 
 
 def register_errors(app):

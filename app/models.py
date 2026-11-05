@@ -8,7 +8,7 @@ Dates are calendar dates in Asia/Kolkata. IDs are UUID strings.
 import uuid
 from datetime import datetime, timezone
 
-from sqlalchemy import CheckConstraint, Index, UniqueConstraint
+from sqlalchemy import CheckConstraint, ForeignKeyConstraint, Index, UniqueConstraint
 
 from app.constants import (
     ACCOUNT_STATUSES, ACCOUNT_TYPES, APPROVAL_PENDING, APPROVAL_STATUSES,
@@ -27,8 +27,7 @@ def utcnow():
 
 
 def in_list(column, values):
-    quoted = ", ".join("'" + v + "'" for v in values)
-    return column + " in (" + quoted + ")"
+    return "%s in (%s)" % (column, ", ".join("'" + v + "'" for v in values))
 
 
 class User(db.Model):
@@ -39,15 +38,16 @@ class User(db.Model):
     display_name = db.Column(db.String(120), nullable=False)
     auth_provider = db.Column(db.String(40), nullable=False, default="local")
     auth_ref = db.Column(db.String(255), nullable=False)
-    email_verified_at = db.Column(db.DateTime(timezone=True))
+    email_verified_at = db.Column(db.DateTime(timezone=True), nullable=True)
     created_at = db.Column(db.DateTime(timezone=True), nullable=False, default=utcnow)
     updated_at = db.Column(db.DateTime(timezone=True), nullable=False, default=utcnow, onupdate=utcnow)
 
-    __table_args__ = (UniqueConstraint("auth_provider", "auth_ref", name="uq_users_provider_ref"),)
+    __table_args__ = (
+        UniqueConstraint("auth_provider", "auth_ref", name="uq_users_provider_ref"),
+    )
 
 
 class LocalCredential(db.Model):
-    """Password hash for the built-in provider. Not used by an external provider."""
     __tablename__ = "local_credentials"
 
     user_id = db.Column(db.String(36), db.ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
@@ -96,6 +96,7 @@ class Account(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), nullable=False, default=utcnow, onupdate=utcnow)
 
     __table_args__ = (
+        UniqueConstraint("id", "household_id", name="uq_accounts_id_household"),
         UniqueConstraint("household_id", "account_name", name="uq_account_household_name"),
         CheckConstraint(in_list("account_type", ACCOUNT_TYPES), name="ck_account_type"),
         CheckConstraint(in_list("account_status", ACCOUNT_STATUSES), name="ck_account_status"),
@@ -121,6 +122,14 @@ class Import(db.Model):
     uploaded_at = db.Column(db.DateTime(timezone=True), nullable=False, default=utcnow)
 
     __table_args__ = (
+        UniqueConstraint("id", "household_id", name="uq_imports_id_household"),
+        UniqueConstraint("id", "account_id", name="uq_imports_id_account"),
+        ForeignKeyConstraint(
+            ["account_id", "household_id"],
+            ["accounts.id", "accounts.household_id"],
+            name="fk_imports_account_household",
+            ondelete="CASCADE",
+        ),
         CheckConstraint(in_list("import_status", IMPORT_STATUSES), name="ck_import_status"),
         # Exact re-import protection. Failed attempts do not block a retry.
         Index(
@@ -162,6 +171,24 @@ class StagedTransaction(db.Model):
 
     __table_args__ = (
         UniqueConstraint("import_id", "source_row_number", name="uq_staged_import_row"),
+        ForeignKeyConstraint(
+            ["account_id", "household_id"],
+            ["accounts.id", "accounts.household_id"],
+            name="fk_staged_account_household",
+            ondelete="CASCADE",
+        ),
+        ForeignKeyConstraint(
+            ["import_id", "account_id"],
+            ["imports.id", "imports.account_id"],
+            name="fk_staged_import_account",
+            ondelete="CASCADE",
+        ),
+        ForeignKeyConstraint(
+            ["import_id", "household_id"],
+            ["imports.id", "imports.household_id"],
+            name="fk_staged_import_household",
+            ondelete="CASCADE",
+        ),
         CheckConstraint(in_list("approval_status", APPROVAL_STATUSES), name="ck_staged_approval"),
         CheckConstraint("validation_status in ('valid', 'invalid')", name="ck_staged_validation"),
     )
@@ -192,6 +219,21 @@ class Transaction(db.Model):
 
     __table_args__ = (
         UniqueConstraint("import_id", "source_row_number", name="uq_transaction_import_row"),
+        ForeignKeyConstraint(
+            ["account_id", "household_id"],
+            ["accounts.id", "accounts.household_id"],
+            name="fk_transactions_account_household",
+        ),
+        ForeignKeyConstraint(
+            ["import_id", "account_id"],
+            ["imports.id", "imports.account_id"],
+            name="fk_transactions_import_account",
+        ),
+        ForeignKeyConstraint(
+            ["import_id", "household_id"],
+            ["imports.id", "imports.household_id"],
+            name="fk_transactions_import_household",
+        ),
         CheckConstraint("amount_minor >= 0", name="ck_transaction_amount_nonneg"),
         CheckConstraint("currency = 'INR'", name="ck_transaction_currency"),
         CheckConstraint(in_list("direction", DIRECTIONS), name="ck_transaction_direction"),

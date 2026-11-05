@@ -1,22 +1,25 @@
 """
-Authentication service (built-in "local" provider).
+Authentication service (supporting both built-in "local" provider and Supabase Auth).
 
-This is the integration boundary for an external provider. User.auth_provider
-and User.auth_ref identify the account at the provider; password hashes live
-in a separate table that an external provider would not use.
+User.auth_provider and User.auth_ref identify the account at the provider.
+Local password hashes live in a separate table that external providers do not use.
 """
 
-import re
 from datetime import datetime, timezone
+import re
 
 from flask import current_app
 from itsdangerous import BadSignature, SignatureExpired, URLSafeTimedSerializer
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from app.auth import mailer
+from app.auth.supabase import supabase_auth, sync_supabase_user
 from app.errors import Conflict, InvalidRequest, Unauthenticated
 from app.extensions import db
 from app.models import LocalCredential, User, new_id
+from app.security.rate_limiter import (
+    check_auth_rate_limit, record_auth_failure, reset_auth_failures,
+)
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 MIN_PASSWORD_LENGTH = 10
@@ -38,11 +41,21 @@ def validate_display_name(name):
 
 def register(email, display_name, password):
     email = normalize_email(email)
+    check_auth_rate_limit("register", identifier=email)
+
     if not EMAIL_RE.match(email) or len(email) > 320:
         raise InvalidRequest("Enter a valid email address")
     display_name = validate_display_name(display_name)
     if len(password or "") < MIN_PASSWORD_LENGTH:
         raise InvalidRequest("Password must be at least %d characters" % MIN_PASSWORD_LENGTH)
+
+    # If Supabase is configured and selected
+    if current_app.config.get("AUTH_PROVIDER") == "supabase" and supabase_auth.is_configured():
+        resp = supabase_auth.sign_up(email, password, display_name)
+        sub_user = resp.get("user") or resp
+        user = sync_supabase_user(sub_user)
+        return user
+
     if User.query.filter_by(email=email).first():
         raise Conflict("An account with this email already exists")
 
@@ -58,13 +71,38 @@ def register(email, display_name, password):
 
 
 def authenticate(email, password):
-    user = User.query.filter_by(email=normalize_email(email)).first()
+    email = normalize_email(email)
+    check_auth_rate_limit("login", identifier=email)
+
+    # Supabase Auth
+    if current_app.config.get("AUTH_PROVIDER") == "supabase" and supabase_auth.is_configured():
+        try:
+            resp = supabase_auth.sign_in_with_password(email, password)
+            sub_user = resp.get("user") or resp
+            user = sync_supabase_user(sub_user)
+            reset_auth_failures("login", identifier=email)
+            return user
+        except Unauthenticated:
+            record_auth_failure("login", identifier=email)
+            raise
+
+    # Local Auth
+    user = User.query.filter_by(email=email).first()
     cred = db.session.get(LocalCredential, user.id) if user else None
     hash_to_check = cred.password_hash if cred else DUMMY_HASH
     ok = check_password_hash(hash_to_check, password or "")
     if not (user and cred and ok):
+        record_auth_failure("login", identifier=email)
         raise Unauthenticated("Invalid email or password")
+
+    reset_auth_failures("login", identifier=email)
     return user
+
+
+def authenticate_supabase_token(access_token):
+    """Verify a Supabase JWT/access token and return the synced local User."""
+    resp = supabase_auth.get_user_from_token(access_token)
+    return sync_supabase_user(resp)
 
 
 def _serializer():
@@ -77,6 +115,14 @@ def make_verification_token(user):
 
 def send_verification(user):
     """Returns True if an email was sent. Never raises for delivery problems."""
+    if user.auth_provider == "supabase" and supabase_auth.is_configured():
+        try:
+            supabase_auth.resend_verification(user.email)
+            return True
+        except Exception:
+            current_app.logger.warning("Supabase resend verification failed for %s", user.email)
+            return False
+
     token = make_verification_token(user)
     link = current_app.config["APP_BASE_URL"].rstrip("/") + "/verify/" + token
     if not mailer.is_configured():

@@ -45,6 +45,17 @@ def login():
     return jsonify({"user": ser.user_json(user), "csrf_token": csrf_token()})
 
 
+@api.post("/auth/supabase/session")
+def supabase_session():
+    data = body()
+    token = data.get("access_token")
+    if not token:
+        raise InvalidRequest("access_token is required")
+    user = auth.authenticate_supabase_token(token)
+    login_user(user)
+    return jsonify({"user": ser.user_json(user), "csrf_token": csrf_token()})
+
+
 @api.post("/auth/logout")
 def logout():
     logout_user()
@@ -130,6 +141,23 @@ def get_import(import_id):
     user = require_user()
     imp = import_service.get_import(user.id, import_id)
     return jsonify({"import": ser.import_json(imp, import_service.import_stats(imp))})
+
+
+@api.get("/imports/<import_id>/file")
+def download_import_file(import_id):
+    from flask import Response
+    from app.imports.storage import retrieve_csv_file
+    user = require_user()
+    raw_bytes, filename = retrieve_csv_file(user.id, import_id)
+    return Response(
+        raw_bytes,
+        mimetype="text/csv",
+        headers={
+            "Content-Disposition": f'attachment; filename="{filename}"',
+            "X-Content-Type-Options": "nosniff",
+            "Cache-Control": "no-store",
+        }
+    )
 
 
 @api.get("/imports/<import_id>/rows")
